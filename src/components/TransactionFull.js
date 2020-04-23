@@ -1,18 +1,20 @@
 import React from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
-import { fromUnixTime, format } from 'date-fns';
+import moment from 'moment';
 
 import paginationFactory from 'react-bootstrap-table2-paginator';
-import filterFactory, { selectFilter } from 'react-bootstrap-table2-filter';
+import filterFactory, { selectFilter, dateFilter, Comparator } from 'react-bootstrap-table2-filter';
+
+let inStockDateFilter;
 
 const TransactionFull = () => {
-  const dateFormatter = (cell) => {
-    if (!cell) {
-      return '';
-    }
-    return `${format(fromUnixTime(cell), 'dd/MM/yy')}`;
-  };
+  // const dateFormatter = (cell) => {
+  //   if (!cell) {
+  //     return '';
+  //   }
+  //   return `${fromUnixTime(cell)}`;
+  // };
 
   const amountFormatter = (cell) => {
     if (!cell) {
@@ -52,7 +54,19 @@ const TransactionFull = () => {
       text: 'Date',
       sort: true,
       footer: '',
-      formatter: (cell) => dateFormatter(cell),
+      formatter: (cell) => {
+        let dateObj = cell;
+        if (typeof cell !== 'object') {
+          dateObj = new Date(cell);
+        }
+        return `${moment(dateObj).format('D/M/YY')}`;
+      },
+      filter: dateFilter({
+        getFilter: (filter) => {
+          // inStockDateFilter was assigned once the component has been mounted.
+          inStockDateFilter = filter;
+        },
+      }),
     },
     {
       dataField: 'amount',
@@ -83,10 +97,11 @@ const TransactionFull = () => {
   ];
 
   const products = [
-    { id: 1, name: 'Biedronka', category: 'Jedzenie', date: 1587340800, amount: 18 },
-    { id: 2, name: 'Biedrona', category: 'Jedzenie', date: 1585094400, amount: 14 },
-    { id: 3, name: 'Biednka', category: 'Paliwo', date: 1580860800, amount: 13 },
-    { id: 4, name: 'Biedonka', category: 'Alkohol', date: 1577836800, amount: 15 },
+    { id: 1, name: 'Biedronka', category: 'Jedzenie', date: '2020-04-29', amount: 18 },
+    { id: 2, name: 'Biedrona', category: 'Jedzenie', date: '2020-04-28', amount: 14 },
+    { id: 3, name: 'Biednka', category: 'Paliwo', date: '2020-04-23', amount: 13 },
+    { id: 4, name: 'Biedonka', category: 'Alkohol', date: '2020-03-02', amount: 15 },
+    { id: 5, name: 'dzsiaij', category: 'Alkohol', date: '2020-04-23', amount: 11 },
   ];
 
   const defaultSorted = [
@@ -96,8 +111,38 @@ const TransactionFull = () => {
     },
   ];
 
+  const filterDay = () => {
+    inStockDateFilter({
+      date: new Date(moment()),
+      comparator: Comparator.EQ,
+    });
+  };
+
+  const filterWeek = () => {
+    inStockDateFilter({
+      date: new Date(moment('2020-04-20')),
+      comparator: Comparator.GT,
+    });
+  };
+
+  const filterMonth = () => {
+    inStockDateFilter({
+      date: new Date(moment('2020-04-01')),
+      comparator: Comparator.GT,
+    });
+  };
+
   return (
     <div>
+      <button type="button" onClick={filterDay}>
+        Today
+      </button>
+      <button type="button" onClick={filterWeek}>
+        This week
+      </button>
+      <button type="button" onClick={filterMonth}>
+        This month
+      </button>
       <BootstrapTable
         bootstrap4
         keyField="id"
