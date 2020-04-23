@@ -37,7 +37,7 @@ const TransactionFull = () => {
     {
       dataField: 'name',
       text: 'Name',
-      footer: 'footer',
+      footer: '',
     },
     {
       dataField: 'category',
@@ -45,29 +45,48 @@ const TransactionFull = () => {
       filter: selectFilter({
         options: selectOptions,
       }),
-      footer: 'footer',
+      footer: '',
     },
     {
       dataField: 'date',
       text: 'Date',
       sort: true,
-      footer: 'footer',
+      footer: '',
       formatter: (cell) => dateFormatter(cell),
     },
     {
       dataField: 'amount',
       text: 'Amount',
       sort: true,
-      footer: (columnData) => columnData.reduce((acc, item) => acc + item, 0),
+      footer: (columnData) => amountFormatter(columnData.reduce((acc, item) => acc + item, 0)),
       formatter: (cell) => amountFormatter(cell),
+    },
+    {
+      dataField: 'actions',
+      text: 'Delete',
+      isDummyField: true,
+      events: {
+        onClick: (e, column, columnIndex, row) => {
+          console.log(row.id);
+        },
+      },
+      formatter: () => {
+        return (
+          <span role="img" aria-label="delete" style={{ cursor: 'pointer' }}>
+            ❌
+          </span>
+        );
+      },
+      headerStyle: { width: '70px', align: 'center' },
+      align: 'center',
     },
   ];
 
   const products = [
-    { id: 0, name: 'Biedronka', category: 'Jedzenie', date: 1587340800, amount: 18 },
-    { id: 1, name: 'Biedrona', category: 'Jedzenie', date: 1585094400, amount: 14 },
-    { id: 2, name: 'Biednka', category: 'Paliwo', date: 1580860800, amount: 13 },
-    { id: 3, name: 'Biedonka', category: 'Alkohol', date: 1577836800, amount: 15 },
+    { id: 1, name: 'Biedronka', category: 'Jedzenie', date: 1587340800, amount: 18 },
+    { id: 2, name: 'Biedrona', category: 'Jedzenie', date: 1585094400, amount: 14 },
+    { id: 3, name: 'Biednka', category: 'Paliwo', date: 1580860800, amount: 13 },
+    { id: 4, name: 'Biedonka', category: 'Alkohol', date: 1577836800, amount: 15 },
   ];
 
   const defaultSorted = [
@@ -87,7 +106,7 @@ const TransactionFull = () => {
         defaultSorted={defaultSorted}
         pagination={paginationFactory()}
         filter={filterFactory()}
-        bordered={false}
+        bordered
       />
     </div>
   );
