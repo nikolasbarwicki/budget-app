@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 
 const Transactions = () => {
   return (
-    <Container>
+    <Container fluid>
       <TransactionFull />
     </Container>
   );
