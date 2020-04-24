@@ -11,20 +11,20 @@ import BudgetHistory from 'components/BudgetHistory';
 
 const Dashboard = () => {
   return (
-    <Container>
+    <Container fluid>
       <Row>
-        <Col>
+        <Col lg={{ span: 6, offset: 1 }}>
           <LineChart />
         </Col>
-        <Col>
+        <Col lg={4}>
           <BudgetHistory />
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col lg={{ span: 6, offset: 1 }}>
           <TransactionList />
         </Col>
-        <Col>
+        <Col lg={4}>
           <DonutChart />
         </Col>
       </Row>
