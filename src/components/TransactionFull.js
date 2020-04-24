@@ -4,9 +4,26 @@ import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import moment from 'moment';
 
 import paginationFactory from 'react-bootstrap-table2-paginator';
-import filterFactory, { selectFilter, dateFilter, Comparator } from 'react-bootstrap-table2-filter';
+import filterFactory, {
+  selectFilter,
+  textFilter,
+  dateFilter,
+  Comparator,
+} from 'react-bootstrap-table2-filter';
 
 let inStockDateFilter;
+
+function priceFormatter(column, colIndex, { sortElement, filterElement }) {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div>
+        {column.text}
+        {sortElement}
+      </div>
+      {filterElement}
+    </div>
+  );
+}
 
 const TransactionFull = () => {
   // const dateFormatter = (cell) => {
@@ -40,6 +57,8 @@ const TransactionFull = () => {
       dataField: 'name',
       text: 'Name',
       footer: '',
+      filter: textFilter(),
+      headerFormatter: priceFormatter,
     },
     {
       dataField: 'category',
@@ -48,6 +67,7 @@ const TransactionFull = () => {
         options: selectOptions,
       }),
       footer: '',
+      headerFormatter: priceFormatter,
     },
     {
       dataField: 'date',
@@ -68,6 +88,7 @@ const TransactionFull = () => {
           inStockDateFilter = filter;
         },
       }),
+      headerFormatter: priceFormatter,
     },
     {
       dataField: 'amount',
@@ -108,7 +129,7 @@ const TransactionFull = () => {
 
   const defaultSorted = [
     {
-      dataField: 'name',
+      dataField: 'date',
       order: 'desc',
     },
   ];
@@ -155,9 +176,6 @@ const TransactionFull = () => {
       <button type="button" onClick={noFilter}>
         All data
       </button>
-      <select>
-        <option value>dupa</option>
-      </select>
       <BootstrapTable
         bootstrap4
         keyField="id"
@@ -166,7 +184,8 @@ const TransactionFull = () => {
         defaultSorted={defaultSorted}
         pagination={paginationFactory()}
         filter={filterFactory()}
-        bordered
+        bordered={false}
+        filterPosition="inline"
       />
     </div>
   );
