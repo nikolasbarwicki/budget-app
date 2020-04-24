@@ -164,6 +164,7 @@ const TransactionFull = () => {
 
   return (
     <div>
+      {/* TODO change to dropdown select */}
       <button type="button" onClick={filterDay}>
         Today
       </button>

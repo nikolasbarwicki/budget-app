@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import BudgetHistory from 'components/BudgetHistory';
 import BudgetItem from 'components/BudgetItem';
 import AddBudgetItem from 'components/AddBudgetItem';
+import Income from 'components/Income';
 
 const BudgetPlanner = () => {
   return (
@@ -22,7 +23,9 @@ const BudgetPlanner = () => {
         </Col>
         <Col lg={3}>
           <Row>
-            <Col className="bg-info">INCOME</Col>
+            <Col className="bg-info">
+              <Income />
+            </Col>
           </Row>
           <Row>
             <Col>

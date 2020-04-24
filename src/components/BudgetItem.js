@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   background-color: lightblue;
   display: grid;
-  grid-template-columns: auto 100px 50%;
+  grid-template-columns: auto 100px 50% 80px;
   align-items: center;
   height: 5rem;
   margin: 1rem 0;
@@ -22,6 +22,7 @@ const BudgetItem = () => {
       <Category>Food</Category>
       <Category>$450</Category>
       <ProgressBar now="60" label="60%" />
+      <button type="button">Delete</button>
     </Wrapper>
   );
 };
