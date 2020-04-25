@@ -1,8 +1,8 @@
-import React, { useState, useRef } from 'react';
-import useOnClickOutside from 'hooks/useOnClickOutside';
+import React, { useRef } from 'react';
 import { createPortal } from 'react-dom';
+import { ModalContext } from 'context/modalContext';
 import styled from 'styled-components';
-import NumberFormat from 'react-number-format';
+import useOnClickOutside from 'hooks/useOnClickOutside';
 
 const Overlay = styled.div`
   position: fixed;
@@ -11,6 +11,7 @@ const Overlay = styled.div`
   bottom: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.3);
+  z-index: 4;
 `;
 
 const Dialog = styled.div`
@@ -21,20 +22,16 @@ const Dialog = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1;
+  z-index: 5;
 `;
 
 const Modal = () => {
-  // Create a ref that we add to the element for which we want to detect outside clicks
+  const { handleModal, modal } = React.useContext(ModalContext);
   const ref = useRef();
-  // State for our modal
-  const [isModalOpen, setModalOpen] = useState(true);
-  // Call hook passing in the ref and a function to call on outside click
-  useOnClickOutside(ref, () => setModalOpen(false));
+  useOnClickOutside(ref, () => handleModal());
 
-  return (
-    isModalOpen &&
-    createPortal(
+  if (modal) {
+    return createPortal(
       <Overlay>
         <Dialog ref={ref}>
           <h4>Add new transaction</h4>
@@ -60,20 +57,7 @@ const Modal = () => {
               Date
               <input type="date" />
             </label>
-            <label>
-              Amount
-              <NumberFormat
-                id="monthyIncome"
-                // value={inputValue}
-                thousandSeparator
-                prefix="$"
-                decimalScale="2"
-                // onValueChange={({ value }) => {
-                //  setInputValue(value);
-                // }}
-              />
-            </label>
-            <button type="button" onClick={() => setModalOpen(false)}>
+            <button type="button" onClick={() => handleModal()}>
               Cancel
             </button>
             <button type="submit">Confirm</button>
@@ -81,8 +65,9 @@ const Modal = () => {
         </Dialog>
       </Overlay>,
       document.querySelector('#modal'),
-    )
-  );
+    );
+  }
+  return null;
 };
 
 export default Modal;

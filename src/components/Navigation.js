@@ -1,11 +1,10 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
-import Modal from 'components/Modal';
-
 import { LinkContainer } from 'react-router-bootstrap';
+import { ModalProvider } from 'context/modalContext';
+import ToggleModal from 'components/ToggleModal';
 
 const Navigation = () => {
   return (
@@ -24,9 +23,10 @@ const Navigation = () => {
           </LinkContainer>
         </Nav>
         <Nav>
-          <Button>Add new</Button>
+          <ModalProvider>
+            <ToggleModal />
+          </ModalProvider>
         </Nav>
-        <Modal />
       </Container>
     </Navbar>
   );
