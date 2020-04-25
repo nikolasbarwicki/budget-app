@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import moment from 'moment';
+
+import { GlobalContext } from 'context/GlobalState';
 
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import filterFactory, {
@@ -119,14 +121,6 @@ const TransactionFull = () => {
     },
   ];
 
-  const products = [
-    { id: 1, name: 'Biedronka', category: 'Jedzenie', date: '2020-04-24', amount: 18 },
-    { id: 2, name: 'Biedrona', category: 'Jedzenie', date: '2020-04-15', amount: 14 },
-    { id: 3, name: 'Biednka', category: 'Paliwo', date: '2020-04-23', amount: 13 },
-    { id: 4, name: 'Biedonka', category: 'Alkohol', date: '2020-03-02', amount: 15 },
-    { id: 5, name: 'dzsiaij', category: 'Alkohol', date: '2020-01-15', amount: 11 },
-  ];
-
   const defaultSorted = [
     {
       dataField: 'date',
@@ -162,6 +156,10 @@ const TransactionFull = () => {
     });
   };
 
+  const { expenses } = useContext(GlobalContext);
+
+  console.log(expenses);
+
   return (
     <div>
       {/* TODO change to dropdown select */}
@@ -180,7 +178,7 @@ const TransactionFull = () => {
       <BootstrapTable
         bootstrap4
         keyField="id"
-        data={products}
+        data={expenses}
         columns={columns}
         defaultSorted={defaultSorted}
         pagination={paginationFactory()}
