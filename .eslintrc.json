@@ -9,6 +9,7 @@
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
   },
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -29,7 +30,9 @@
         "depth": 3
       }
     ],
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "react/state-in-constructor": "off",
+    "react/jsx-props-no-spreading": 0
   },
   "settings": {
     "import/resolver": {

@@ -1,10 +1,11 @@
 import React, { useRef, useContext } from 'react';
 import { createPortal } from 'react-dom';
 import { ModalContext } from 'context/modalContext';
-import { GlobalContext } from 'context/GlobalState';
+
 import styled from 'styled-components';
 import useOnClickOutside from 'hooks/useOnClickOutside';
-import NumberFormat from 'react-number-format';
+
+import Form from 'components/Form';
 
 const Overlay = styled.div`
   position: fixed;
@@ -29,7 +30,6 @@ const Dialog = styled.div`
 
 const Modal = () => {
   const { handleModal, modal } = useContext(ModalContext);
-  const { categories } = useContext(GlobalContext);
 
   const ref = useRef();
   useOnClickOutside(ref, () => handleModal());
@@ -38,7 +38,8 @@ const Modal = () => {
     return createPortal(
       <Overlay>
         <Dialog ref={ref}>
-          <h4>Add new transaction</h4>
+          <Form />
+          {/* <h4>Add new transaction</h4>
           <form>
             <label>
               Name
@@ -73,7 +74,7 @@ const Modal = () => {
               Cancel
             </button>
             <button type="submit">Confirm</button>
-          </form>
+          </form> */}
         </Dialog>
       </Overlay>,
       document.querySelector('#modal'),
