@@ -19,9 +19,9 @@ const initialState = {
     ],
   ],
   expenses: [
-    [{ id: 1, name: 'Apartment', category: 'Rent', date: '2020-04-24', amount: 950 }],
-    [{ id: 1, name: 'Apartment', category: 'Rent', date: '2020-04-24', amount: 1170 }],
-    [{ id: 1, name: 'Apartment', category: 'Rent', date: '2020-04-24', amount: 895 }],
+    [{ id: 1, name: 'Apartment', category: 'Rent', date: '2020-01-24', amount: 950 }],
+    [{ id: 1, name: 'Apartment', category: 'Rent', date: '2020-02-24', amount: 1170 }],
+    [{ id: 1, name: 'Apartment', category: 'Rent', date: '2020-03-24', amount: 895 }],
     [
       { id: 1, name: 'Apartment', category: 'Rent', date: '2020-04-24', amount: 180 },
       { id: 2, name: 'Shoes', category: 'Clothes', date: '2020-04-15', amount: 100 },
@@ -35,6 +35,7 @@ const initialState = {
       { id: 10, name: 'Gasoline', category: 'Car', date: '2020-04-11', amount: 35 },
     ],
   ],
+  categories: ['Food', 'Rent', 'Clothes', 'Car', 'Entertainment'],
 };
 
 // Create context
@@ -66,6 +67,7 @@ export const GlobalProvider = ({ children }) => {
         expense: state.expense,
         budget: state.budget,
         income: state.income,
+        categories: state.categories,
         deleteTransaction,
         addTransaction,
       }}

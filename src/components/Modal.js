@@ -1,8 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
 import { createPortal } from 'react-dom';
 import { ModalContext } from 'context/modalContext';
+import { GlobalContext } from 'context/GlobalState';
 import styled from 'styled-components';
 import useOnClickOutside from 'hooks/useOnClickOutside';
+import NumberFormat from 'react-number-format';
 
 const Overlay = styled.div`
   position: fixed;
@@ -26,7 +28,9 @@ const Dialog = styled.div`
 `;
 
 const Modal = () => {
-  const { handleModal, modal } = React.useContext(ModalContext);
+  const { handleModal, modal } = useContext(ModalContext);
+  const { categories } = useContext(GlobalContext);
+
   const ref = useRef();
   useOnClickOutside(ref, () => handleModal());
 
@@ -37,21 +41,29 @@ const Modal = () => {
           <h4>Add new transaction</h4>
           <form>
             <label>
-              Type
-              <input type="radio" />
-              <input type="radio" />
-            </label>
-            <label>
               Name
               <input type="text" />
             </label>
             <label>
               Category
               <select>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
+                {categories.map((item) => {
+                  return <option value={item}>{item}</option>;
+                })}
               </select>
+            </label>
+            <label>
+              Value
+              <NumberFormat
+                id="monthyIncome"
+                // value={inputValue}
+                thousandSeparator
+                prefix="$"
+                decimalScale="2"
+                // onValueChange={({ value }) => {
+                //   setInputValue(value);
+                // }}
+              />
             </label>
             <label>
               Date

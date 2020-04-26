@@ -30,7 +30,7 @@ function priceFormatter(column, colIndex, { sortElement, filterElement }) {
 const TransactionFull = () => {
   const currMonth = moment().month();
 
-  const { expenses, deleteTransaction } = useContext(GlobalContext);
+  const { expenses, deleteTransaction, categories } = useContext(GlobalContext);
 
   const currExpenses = expenses[currMonth];
   // const dateFormatter = (cell) => {
@@ -47,11 +47,16 @@ const TransactionFull = () => {
     return `$${cell.toFixed(2)}`;
   };
 
-  const selectOptions = {
-    Jedzenie: 'Jedzenie',
-    Paliwo: 'Paliwo',
-    Alkohol: 'Alkohol',
+  const convertArrayToObject = (array) => {
+    const initialValue = {};
+    return array.reduce((obj, item) => {
+      return {
+        ...obj,
+        [item]: item,
+      };
+    }, initialValue);
   };
+  const selectOptions = convertArrayToObject(categories);
 
   const columns = [
     {
