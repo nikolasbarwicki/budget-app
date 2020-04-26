@@ -28,6 +28,11 @@ function priceFormatter(column, colIndex, { sortElement, filterElement }) {
 }
 
 const TransactionFull = () => {
+  const currMonth = moment().month();
+
+  const { expenses, deleteTransaction } = useContext(GlobalContext);
+
+  const currExpenses = expenses[currMonth];
   // const dateFormatter = (cell) => {
   //   if (!cell) {
   //     return '';
@@ -106,7 +111,7 @@ const TransactionFull = () => {
       isDummyField: true,
       events: {
         onClick: (e, column, columnIndex, row) => {
-          console.log(row.id);
+          deleteTransaction(row.id);
         },
       },
       formatter: () => {
@@ -151,13 +156,6 @@ const TransactionFull = () => {
       comparator: Comparator.LE,
     });
   };
-
-  const currYear = moment().year();
-  const currMonth = moment().month();
-
-  const { expenses } = useContext(GlobalContext);
-
-  const currExpenses = expenses[currYear][currMonth];
 
   return (
     <div>

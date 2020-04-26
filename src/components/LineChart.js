@@ -1,17 +1,9 @@
 import React, { useContext } from 'react';
 import { Line, Chart } from 'react-chartjs-2';
-import moment from 'moment';
 import { GlobalContext } from 'context/GlobalState';
 
 const LineChart = () => {
-  const currYear = moment().year();
-
   const { income, expense } = useContext(GlobalContext);
-
-  const currIncome = income[currYear];
-  const currExpense = expense[currYear];
-
-  console.log(currExpense);
 
   // const spent = currExpenses.reduce((sum, item) => {
   //   return sum + item.amount;
@@ -40,13 +32,13 @@ const LineChart = () => {
           label: 'Income',
           backgroundColor: gradientBlue,
           borderColor: 'rgb(44, 130, 201)',
-          data: currIncome,
+          data: income,
         },
         {
           label: 'Expenses',
           backgroundColor: gradientRed,
           borderColor: 'rgb(255, 99, 132)',
-          data: currExpense,
+          data: expense,
         },
       ],
     };

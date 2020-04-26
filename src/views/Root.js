@@ -7,21 +7,25 @@ import Dashboard from 'views/Dashboard';
 import BudgetPlanner from 'views/BudgetPlanner';
 import Transactions from 'views/Transactions';
 
+import { GlobalProvider } from 'context/GlobalState';
+
 const App = () => (
   <>
     <Router>
-      <Navigation />
-      <Switch>
-        <Route exact path="/">
-          <Dashboard />
-        </Route>
-        <Route path="/budget">
-          <BudgetPlanner />
-        </Route>
-        <Route path="/transactions">
-          <Transactions />
-        </Route>
-      </Switch>
+      <GlobalProvider>
+        <Navigation />
+        <Switch>
+          <Route exact path="/">
+            <Dashboard />
+          </Route>
+          <Route path="/budget">
+            <BudgetPlanner />
+          </Route>
+          <Route path="/transactions">
+            <Transactions />
+          </Route>
+        </Switch>
+      </GlobalProvider>
     </Router>
   </>
 );

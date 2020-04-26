@@ -10,14 +10,12 @@ const options = {
 
 const BudgetHistory = () => {
   Chart.defaults.global.legend.display = true;
-
-  const currYear = moment().year();
   const currMonth = moment().month();
 
   const { income, expenses } = useContext(GlobalContext);
 
-  const currIncome = income[currYear][currMonth];
-  const currExpenses = expenses[currYear][currMonth];
+  const currIncome = income[currMonth];
+  const currExpenses = expenses[currMonth];
 
   const spent = currExpenses.reduce((sum, item) => {
     return sum + item.amount;

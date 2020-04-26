@@ -10,12 +10,11 @@ import { GlobalContext } from 'context/GlobalState';
 import moment from 'moment';
 
 const BudgetPlanner = () => {
-  const currYear = moment().year();
   const currMonth = moment().month();
 
   const { budget } = useContext(GlobalContext);
 
-  const currBudget = budget[currYear][currMonth];
+  const currBudget = budget[currMonth];
 
   return (
     <Container fluid>

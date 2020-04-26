@@ -4,12 +4,11 @@ import { GlobalContext } from 'context/GlobalState';
 import moment from 'moment';
 
 const Income = () => {
-  const currYear = moment().year();
   const currMonth = moment().month();
 
   const { income } = useContext(GlobalContext);
 
-  const currIncome = income[currYear][currMonth];
+  const currIncome = income[currMonth];
 
   const [inputValue, setInputValue] = useState(currIncome);
 

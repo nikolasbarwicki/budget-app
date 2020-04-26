@@ -85,13 +85,11 @@ const SmallTransactionList = () => {
       order: 'desc',
     },
   ];
-
-  const currYear = moment().year();
   const currMonth = moment().month();
 
   const { expenses } = useContext(GlobalContext);
 
-  const currExpenses = expenses[currYear][currMonth];
+  const currExpenses = expenses[currMonth];
 
   return (
     <Wrapper>

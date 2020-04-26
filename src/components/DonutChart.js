@@ -11,11 +11,10 @@ const options = {
 };
 
 const DonutChart = () => {
-  const currYear = moment().year();
   const currMonth = moment().month();
 
   const { expenses } = useContext(GlobalContext);
-  const currExpenses = expenses[currYear][currMonth];
+  const currExpenses = expenses[currMonth];
 
   const categories = [
     ...new Set(
