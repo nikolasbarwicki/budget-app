@@ -60,6 +60,13 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  function updateIncome(income) {
+    dispatch({
+      type: 'UPDATE_INCOME',
+      payload: income,
+    });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -70,6 +77,7 @@ export const GlobalProvider = ({ children }) => {
         categories: state.categories,
         deleteTransaction,
         addTransaction,
+        updateIncome,
       }}
     >
       {children}

@@ -13,6 +13,11 @@ export default (state, action) => {
         ...state,
         expenses: [...state.expenses, state.expenses[3].push(action.payload)],
       };
+    case 'UPDATE_INCOME':
+      return {
+        ...state,
+        income: [...state.income.slice(0, 3), action.payload],
+      };
 
     default:
       return state;

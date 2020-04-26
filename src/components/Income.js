@@ -1,16 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import NumberFormat from 'react-number-format';
 import { GlobalContext } from 'context/GlobalState';
 import moment from 'moment';
 
 const Income = () => {
   const currMonth = moment().month();
-
-  const { income } = useContext(GlobalContext);
+  const { income, updateIncome } = useContext(GlobalContext);
 
   const currIncome = income[currMonth];
-
-  const [inputValue, setInputValue] = useState(currIncome);
 
   // TODO: Add reducer to input
 
@@ -20,12 +17,12 @@ const Income = () => {
         This month income:
         <NumberFormat
           id="monthyIncome"
-          value={inputValue}
+          value={currIncome}
           thousandSeparator
           prefix="$"
           decimalScale="2"
           onValueChange={({ value }) => {
-            setInputValue(value);
+            updateIncome(value);
           }}
         />
       </label>

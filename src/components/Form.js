@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import { Formik } from 'formik';
 import { GlobalContext } from 'context/GlobalState';
+import { ModalContext } from 'context/modalContext';
 import MyNumberInput from 'components/MyNumberInput';
 import cuid from 'cuid';
 
 const Form = () => {
   const { addTransaction, categories } = useContext(GlobalContext);
-
+  const { handleModal } = useContext(ModalContext);
   return (
     <div>
       <h1>My Form</h1>
@@ -14,6 +15,7 @@ const Form = () => {
         initialValues={{ id: cuid.slug(), category: 'Food', name: '', date: '', amount: '' }}
         onSubmit={(values) => {
           addTransaction(values);
+          handleModal();
         }}
       >
         {(props) => (
@@ -54,6 +56,9 @@ const Form = () => {
               onValueChange={(val) => props.setFieldValue('amount', val.floatValue)}
             />
 
+            <button type="button" onClick={() => handleModal()}>
+              Cancel
+            </button>
             <button type="submit">Submit</button>
           </form>
         )}
