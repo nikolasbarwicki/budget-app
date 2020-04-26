@@ -16,11 +16,11 @@ const Category = styled.p`
   margin: 0;
 `;
 
-const BudgetItem = () => {
+const BudgetItem = ({ category, amount }) => {
   return (
     <Wrapper>
-      <Category>Food</Category>
-      <Category>$450</Category>
+      <Category>{category}</Category>
+      <Category>${amount}</Category>
       <ProgressBar now="60" label="60%" />
       <button type="button">Delete</button>
     </Wrapper>

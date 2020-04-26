@@ -1,20 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Doughnut, Chart } from 'react-chartjs-2';
-
-Chart.defaults.global.legend.display = true;
-
-const data = () => {
-  return {
-    labels: ['Spent', 'Remaining'],
-    datasets: [
-      {
-        label: 'Spent',
-        backgroundColor: ['rgba(255, 99, 132, 0.5)'],
-        data: [24500, 3000],
-      },
-    ],
-  };
-};
+import { GlobalContext } from 'context/GlobalState';
+import moment from 'moment';
 
 const options = {
   responsive: true,
@@ -22,6 +9,34 @@ const options = {
 };
 
 const BudgetHistory = () => {
+  Chart.defaults.global.legend.display = true;
+
+  const currYear = moment().year();
+  const currMonth = moment().month();
+
+  const { income, expenses } = useContext(GlobalContext);
+
+  const currIncome = income[currYear][currMonth];
+  const currExpenses = expenses[currYear][currMonth];
+
+  const spent = currExpenses.reduce((sum, item) => {
+    return sum + item.amount;
+  }, 0);
+  const remaining = currIncome - spent;
+
+  const data = () => {
+    return {
+      labels: ['Spent', 'Remaining'],
+      datasets: [
+        {
+          label: 'Spent',
+          backgroundColor: ['rgba(255, 99, 132, 0.5)'],
+          data: [spent, remaining],
+        },
+      ],
+    };
+  };
+
   return <Doughnut data={data} width="100%" height={300} options={options} />;
 };
 

@@ -110,11 +110,7 @@ const TransactionFull = () => {
         },
       },
       formatter: () => {
-        return (
-          <span role="img" aria-label="delete" style={{ cursor: 'pointer' }}>
-            ❌
-          </span>
-        );
+        return <button type="button">X</button>;
       },
       headerStyle: { width: '70px', align: 'center' },
       align: 'center',
@@ -156,9 +152,12 @@ const TransactionFull = () => {
     });
   };
 
+  const currYear = moment().year();
+  const currMonth = moment().month();
+
   const { expenses } = useContext(GlobalContext);
 
-  console.log(expenses);
+  const currExpenses = expenses[currYear][currMonth];
 
   return (
     <div>
@@ -178,7 +177,7 @@ const TransactionFull = () => {
       <BootstrapTable
         bootstrap4
         keyField="id"
-        data={expenses}
+        data={currExpenses}
         columns={columns}
         defaultSorted={defaultSorted}
         pagination={paginationFactory()}

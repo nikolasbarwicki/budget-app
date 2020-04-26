@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 
 import LineChart from 'components/LineChart';
 import DonutChart from 'components/DonutChart';
-import TransactionList from 'components/TransactionList';
+import SmallTransactionList from 'components/SmallTransactionList';
 import BudgetHistory from 'components/BudgetHistory';
 
 const Dashboard = () => {
@@ -22,7 +22,7 @@ const Dashboard = () => {
       </Row>
       <Row>
         <Col lg={{ span: 6, offset: 1 }}>
-          <TransactionList />
+          <SmallTransactionList />
         </Col>
         <Col lg={4}>
           <DonutChart />
