@@ -6,8 +6,11 @@ import MyNumberInput from 'components/MyNumberInput';
 import cuid from 'cuid';
 
 const Form = () => {
-  const { addTransaction, categories } = useContext(GlobalContext);
+  const { addTransaction, categories, updateExpense, expenses } = useContext(GlobalContext);
   const { handleModal } = useContext(ModalContext);
+
+  const currExpenses = expenses[3];
+
   return (
     <div>
       <h1>My Form</h1>
@@ -15,6 +18,13 @@ const Form = () => {
         initialValues={{ id: cuid.slug(), category: 'Food', name: '', date: '', amount: '' }}
         onSubmit={(values) => {
           addTransaction(values);
+
+          const spent = currExpenses.reduce((sum, item) => {
+            return sum + item.amount;
+          }, 0);
+
+          updateExpense(spent);
+
           handleModal();
         }}
       >

@@ -9,8 +9,6 @@ const Income = () => {
 
   const currIncome = income[currMonth];
 
-  // TODO: Add reducer to input
-
   return (
     <div>
       <label htmlFor="monthyIncome">

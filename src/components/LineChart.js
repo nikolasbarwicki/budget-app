@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Line, Chart } from 'react-chartjs-2';
 import { GlobalContext } from 'context/GlobalState';
 
 const LineChart = () => {
-  const { income, expense } = useContext(GlobalContext);
+  const { income, expense, expenses, updateExpense } = useContext(GlobalContext);
 
   // const spent = currExpenses.reduce((sum, item) => {
   //   return sum + item.amount;
@@ -14,6 +14,20 @@ const LineChart = () => {
   Chart.defaults.global.defaultFontFamily = "'PT Sans', sans-serif";
   Chart.defaults.global.legend.display = false;
   Chart.defaults.global.animation.duration = 1500;
+
+  useEffect(() => {
+    const currExpenses = expenses[3];
+
+    function updateCurrMonthExpense(object) {
+      const spent = object.reduce((sum, item) => {
+        return sum + item.amount;
+      }, 0);
+
+      updateExpense(spent);
+    }
+
+    updateCurrMonthExpense(currExpenses);
+  }, [expenses]);
 
   const data = (canvas) => {
     const context = canvas.getContext('2d');

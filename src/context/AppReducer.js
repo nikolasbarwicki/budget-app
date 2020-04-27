@@ -18,6 +18,11 @@ export default (state, action) => {
         ...state,
         income: [...state.income.slice(0, 3), action.payload],
       };
+    case 'UPDATE_EXPENSE':
+      return {
+        ...state,
+        expense: [...state.expense.slice(0, 3), action.payload],
+      };
 
     default:
       return state;

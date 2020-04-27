@@ -1,11 +1,11 @@
 import React from 'react';
-import ProgressBar from 'react-bootstrap/ProgressBar';
+
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
   background-color: lightblue;
   display: grid;
-  grid-template-columns: auto 100px 50% 80px;
+  grid-template-columns: 40% 30% auto 80px;
   align-items: center;
   height: 5rem;
   margin: 1rem 0;
@@ -16,12 +16,12 @@ const Category = styled.p`
   margin: 0;
 `;
 
-const BudgetItem = ({ category, amount }) => {
+const BudgetItem = ({ category, amount, spent }) => {
   return (
     <Wrapper>
       <Category>{category}</Category>
-      <Category>${amount}</Category>
-      <ProgressBar now="60" label="60%" />
+      <Category>Planned: ${amount}</Category>
+      <Category>Spent: ${spent}</Category>
       <button type="button">Delete</button>
     </Wrapper>
   );

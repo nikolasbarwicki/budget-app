@@ -12,9 +12,16 @@ import moment from 'moment';
 const BudgetPlanner = () => {
   const currMonth = moment().month();
 
-  const { budget } = useContext(GlobalContext);
+  const { budget, expenses } = useContext(GlobalContext);
 
   const currBudget = budget[currMonth];
+  const currExpenses = expenses[currMonth];
+
+  const calcCategoryExpenses = (cat) => {
+    return [...currExpenses.filter(({ category }) => category === cat)].reduce((sum, item) => {
+      return sum + item.amount;
+    }, 0);
+  };
 
   return (
     <Container fluid>
@@ -22,7 +29,11 @@ const BudgetPlanner = () => {
         <Col lg={{ span: 7, offset: 1 }}>
           <AddBudgetItem />
           {currBudget.map((item) => (
-            <BudgetItem category={item.category} amount={item.amount} />
+            <BudgetItem
+              category={item.category}
+              amount={item.amount}
+              spent={calcCategoryExpenses(item.category)}
+            />
           ))}
         </Col>
         <Col lg={3}>
