@@ -23,6 +23,29 @@ export default (state, action) => {
         ...state,
         expense: [...state.expense.slice(0, 3), action.payload],
       };
+    case 'ADD_CATEGORY':
+      return {
+        ...state,
+        budget: [...state.expenses.slice(0, 3), [...state.budget[3], action.payload]],
+      };
+    case 'ADD_CATEGORY_LIST':
+      return {
+        ...state,
+        categories: [...state.categories, action.payload],
+      };
+    case 'DELETE_CATEGORY':
+      return {
+        ...state,
+        budget: [
+          ...state.budget.slice(0, 3),
+          state.budget[3].filter((item) => item.id !== action.payload),
+        ],
+      };
+    case 'DELETE_CATEGORY_LIST':
+      return {
+        ...state,
+        categories: [...state.categories.filter((item) => item !== action.payload)],
+      };
 
     default:
       return state;

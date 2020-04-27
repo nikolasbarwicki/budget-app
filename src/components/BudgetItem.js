@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { GlobalContext } from 'context/GlobalState';
 
 import styled from 'styled-components';
 
@@ -16,13 +17,17 @@ const Category = styled.p`
   margin: 0;
 `;
 
-const BudgetItem = ({ category, amount, spent }) => {
+const BudgetItem = ({ category, amount, spent, id }) => {
+  const { deleteCategory } = useContext(GlobalContext);
+
   return (
     <Wrapper>
       <Category>{category}</Category>
       <Category>Planned: ${amount}</Category>
       <Category>Spent: ${spent}</Category>
-      <button type="button">Delete</button>
+      <button type="button" onClick={() => deleteCategory(id, category)}>
+        Delete
+      </button>
     </Wrapper>
   );
 };

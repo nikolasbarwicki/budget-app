@@ -33,6 +33,8 @@ const BudgetPlanner = () => {
               category={item.category}
               amount={item.amount}
               spent={calcCategoryExpenses(item.category)}
+              key={item.id}
+              id={item.id}
             />
           ))}
         </Col>

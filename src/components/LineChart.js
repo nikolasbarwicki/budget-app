@@ -5,29 +5,19 @@ import { GlobalContext } from 'context/GlobalState';
 const LineChart = () => {
   const { income, expense, expenses, updateExpense } = useContext(GlobalContext);
 
-  // const spent = currExpenses.reduce((sum, item) => {
-  //   return sum + item.amount;
-  // }, 0);
-
-  // console.log(spent);
+  const currExpenses = expenses[3];
 
   Chart.defaults.global.defaultFontFamily = "'PT Sans', sans-serif";
   Chart.defaults.global.legend.display = false;
   Chart.defaults.global.animation.duration = 1500;
 
   useEffect(() => {
-    const currExpenses = expenses[3];
+    const spent = currExpenses.reduce((sum, item) => {
+      return sum + item.amount;
+    }, 0);
 
-    function updateCurrMonthExpense(object) {
-      const spent = object.reduce((sum, item) => {
-        return sum + item.amount;
-      }, 0);
-
-      updateExpense(spent);
-    }
-
-    updateCurrMonthExpense(currExpenses);
-  }, [expenses]);
+    updateExpense(spent);
+  }, [currExpenses]);
 
   const data = (canvas) => {
     const context = canvas.getContext('2d');
@@ -83,7 +73,7 @@ const LineChart = () => {
     },
   };
 
-  return <Line data={data} width="100%" height={300} options={options} />;
+  return <Line data={data} height={300} options={options} />;
 };
 
 export default LineChart;

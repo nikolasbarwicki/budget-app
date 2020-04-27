@@ -115,7 +115,7 @@ const TransactionFull = () => {
       text: 'Delete',
       isDummyField: true,
       events: {
-        onClick: async (e, column, columnIndex, row) => {
+        onClick: (e, column, columnIndex, row) => {
           deleteTransaction(row.id);
         },
       },

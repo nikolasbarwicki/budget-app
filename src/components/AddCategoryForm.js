@@ -11,7 +11,7 @@ const Form = () => {
     <div>
       <h1>My Form</h1>
       <Formik
-        initialValues={{ id: cuid.slug(), category: '', amount: '' }}
+        initialValues={{ id: cuid.slug(), category: '', name: '', amount: '' }}
         onSubmit={(values) => {
           addCategory(values);
         }}
@@ -20,13 +20,7 @@ const Form = () => {
           <form onSubmit={props.handleSubmit}>
             <label htmlFor="category">
               Category:
-              <input
-                id="category"
-                name="category"
-                type="text"
-                onChange={props.handleChange}
-                value={props.values.category}
-              />
+              <input type="text" id="category" />
             </label>
 
             <label htmlFor="amount">amount</label>

@@ -53,7 +53,7 @@ const DonutChart = () => {
     };
   };
 
-  return <Doughnut data={data} width="100%" height={300} options={options} />;
+  return <Doughnut data={data} height={300} options={options} />;
 };
 
 export default DonutChart;

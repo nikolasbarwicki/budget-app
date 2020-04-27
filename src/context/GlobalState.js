@@ -3,7 +3,6 @@ import AppReducer from 'context/AppReducer';
 
 // Initial state
 const initialState = {
-  // TODO: figure out how to get sum of expenses for each month
   income: [1300, 1400, 1350, 1500],
   expense: [950, 1170, 895, 805],
   budget: [
@@ -11,11 +10,11 @@ const initialState = {
     [],
     [],
     [
-      { category: 'Food', amount: 250 },
-      { category: 'Rent', amount: 750 },
-      { category: 'Clothes', amount: 130 },
-      { category: 'Car', amount: 70 },
-      { category: 'Entertainment', amount: 140 },
+      { id: 1, category: 'Food', amount: 250 },
+      { id: 2, category: 'Rent', amount: 750 },
+      { id: 3, category: 'Clothes', amount: 130 },
+      { id: 4, category: 'Car', amount: 70 },
+      { id: 5, category: 'Entertainment', amount: 140 },
     ],
   ],
   expenses: [
@@ -67,10 +66,32 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
-  function updateExpense(expenses) {
+  function updateExpense(expense) {
     dispatch({
       type: 'UPDATE_EXPENSE',
-      payload: expenses,
+      payload: expense,
+    });
+  }
+
+  function addCategory(payload) {
+    dispatch({
+      type: 'ADD_CATEGORY',
+      payload,
+    });
+    dispatch({
+      type: 'ADD_CATEGORY_LIST',
+      payload: payload.category,
+    });
+  }
+
+  function deleteCategory(id, category) {
+    dispatch({
+      type: 'DELETE_CATEGORY',
+      payload: id,
+    });
+    dispatch({
+      type: 'DELETE_CATEGORY_LIST',
+      payload: category,
     });
   }
 
@@ -86,6 +107,8 @@ export const GlobalProvider = ({ children }) => {
         addTransaction,
         updateIncome,
         updateExpense,
+        addCategory,
+        deleteCategory,
       }}
     >
       {children}
