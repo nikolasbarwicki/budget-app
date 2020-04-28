@@ -39,42 +39,6 @@ const Modal = () => {
       <Overlay>
         <Dialog ref={ref}>
           <Form />
-          {/* <h4>Add new transaction</h4>
-          <form>
-            <label>
-              Name
-              <input type="text" />
-            </label>
-            <label>
-              Category
-              <select>
-                {categories.map((item) => {
-                  return <option value={item}>{item}</option>;
-                })}
-              </select>
-            </label>
-            <label>
-              Value
-              <NumberFormat
-                id="monthyIncome"
-                // value={inputValue}
-                thousandSeparator
-                prefix="$"
-                decimalScale="2"
-                // onValueChange={({ value }) => {
-                //   setInputValue(value);
-                // }}
-              />
-            </label>
-            <label>
-              Date
-              <input type="date" />
-            </label>
-            <button type="button" onClick={() => handleModal()}>
-              Cancel
-            </button>
-            <button type="submit">Confirm</button>
-          </form> */}
         </Dialog>
       </Overlay>,
       document.querySelector('#modal'),

@@ -8,7 +8,7 @@ const options = {
   maintainAspectRatio: false,
 };
 
-const BudgetHistory = () => {
+const SpentChart = () => {
   Chart.defaults.global.legend.display = true;
   const currMonth = moment().month();
 
@@ -38,4 +38,4 @@ const BudgetHistory = () => {
   return <Doughnut data={data} height={300} options={options} />;
 };
 
-export default BudgetHistory;
+export default SpentChart;

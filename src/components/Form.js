@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Formik } from 'formik';
 import { GlobalContext } from 'context/GlobalState';
 import { ModalContext } from 'context/modalContext';
-import MyNumberInput from 'components/MyNumberInput';
+import NumberInput from 'components/NumberInput';
 import cuid from 'cuid';
 
 const Form = () => {
@@ -61,7 +61,7 @@ const Form = () => {
             />
 
             <label htmlFor="amount">amount</label>
-            <MyNumberInput
+            <NumberInput
               value={props.values.amount}
               onValueChange={(val) => props.setFieldValue('amount', val.floatValue)}
             />

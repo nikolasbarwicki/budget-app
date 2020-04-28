@@ -24,7 +24,7 @@ function priceFormatter(column, colIndex, { sortElement, filterElement }) {
   );
 }
 
-const SmallTransactionList = () => {
+const TransactionsTableSmall = () => {
   const amountFormatter = (cell) => {
     if (!cell) {
       return '';
@@ -105,4 +105,4 @@ const SmallTransactionList = () => {
   );
 };
 
-export default SmallTransactionList;
+export default TransactionsTableSmall;

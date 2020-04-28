@@ -3,7 +3,7 @@ import NumberFormat from 'react-number-format';
 import { GlobalContext } from 'context/GlobalState';
 import moment from 'moment';
 
-const Income = () => {
+const IncomeInput = () => {
   const currMonth = moment().month();
   const { income, updateIncome } = useContext(GlobalContext);
 
@@ -28,4 +28,4 @@ const Income = () => {
   );
 };
 
-export default Income;
+export default IncomeInput;

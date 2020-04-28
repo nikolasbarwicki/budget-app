@@ -5,9 +5,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import LineChart from 'components/LineChart';
-import DonutChart from 'components/DonutChart';
-import SmallTransactionList from 'components/SmallTransactionList';
-import BudgetHistory from 'components/BudgetHistory';
+import CategoriesChart from 'components/CategoriesChart';
+import TransactionsTableSmall from 'components/TransactionsTableSmall';
+import SpentChart from 'components/SpentChart';
 
 const Dashboard = () => {
   return (
@@ -17,15 +17,15 @@ const Dashboard = () => {
           <LineChart />
         </Col>
         <Col lg={4}>
-          <BudgetHistory />
+          <SpentChart />
         </Col>
       </Row>
       <Row>
         <Col lg={{ span: 6, offset: 1 }}>
-          <SmallTransactionList />
+          <TransactionsTableSmall />
         </Col>
         <Col lg={4}>
-          <DonutChart />
+          <CategoriesChart />
         </Col>
       </Row>
     </Container>

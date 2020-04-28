@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import BudgetHistory from 'components/BudgetHistory';
+import SpentChart from 'components/SpentChart';
 import BudgetItem from 'components/BudgetItem';
 import AddBudgetItem from 'components/AddBudgetItem';
-import Income from 'components/Income';
+import IncomeInput from 'components/IncomeInput';
 import { GlobalContext } from 'context/GlobalState';
 import moment from 'moment';
 
@@ -41,12 +41,12 @@ const BudgetPlanner = () => {
         <Col lg={3}>
           <Row>
             <Col className="bg-info">
-              <Income />
+              <IncomeInput />
             </Col>
           </Row>
           <Row>
             <Col>
-              <BudgetHistory />
+              <SpentChart />
             </Col>
           </Row>
         </Col>

@@ -1,7 +1,7 @@
 import React from 'react';
 import NumberFormat from 'react-number-format';
 
-class MyNumberInput extends React.Component {
+class NumberInput extends React.Component {
   state = {
     value: 0,
   };
@@ -23,4 +23,4 @@ class MyNumberInput extends React.Component {
   }
 }
 
-export default MyNumberInput;
+export default NumberInput;

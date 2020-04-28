@@ -27,7 +27,7 @@ function priceFormatter(column, colIndex, { sortElement, filterElement }) {
   );
 }
 
-const TransactionFull = () => {
+const TransactionTable = () => {
   const currMonth = moment().month();
 
   const { expenses, deleteTransaction, categories } = useContext(GlobalContext);
@@ -192,4 +192,4 @@ const TransactionFull = () => {
   );
 };
 
-export default TransactionFull;
+export default TransactionTable;

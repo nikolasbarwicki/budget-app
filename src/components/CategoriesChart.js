@@ -10,7 +10,7 @@ const options = {
   maintainAspectRatio: false,
 };
 
-const DonutChart = () => {
+const CategoriesChart = () => {
   const currMonth = moment().month();
 
   const { expenses } = useContext(GlobalContext);
@@ -56,4 +56,4 @@ const DonutChart = () => {
   return <Doughnut data={data} height={300} options={options} />;
 };
 
-export default DonutChart;
+export default CategoriesChart;
