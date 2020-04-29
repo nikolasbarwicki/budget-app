@@ -18,7 +18,7 @@ const Form = () => {
         initialValues={{ id: cuid.slug(), category: 'Food', name: '', date: '', amount: '' }}
         onSubmit={(values) => {
           addTransaction(values);
-
+          console.log(values);
           const spent = currExpenses.reduce((sum, item) => {
             return sum + item.amount;
           }, 0);

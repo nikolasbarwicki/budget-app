@@ -11,7 +11,7 @@ export default (state, action) => {
     case 'ADD_TRANSACTION':
       return {
         ...state,
-        expenses: [...state.expenses, state.expenses[3].push(action.payload)],
+        expenses: [...state.expenses.slice(0, 3), [...state.expenses[3], action.payload]],
       };
     case 'UPDATE_INCOME':
       return {
@@ -26,7 +26,7 @@ export default (state, action) => {
     case 'ADD_CATEGORY':
       return {
         ...state,
-        budget: [...state.expenses.slice(0, 3), [...state.budget[3], action.payload]],
+        budget: [...state.budget.slice(0, 3), [...state.budget[3], action.payload]],
       };
     case 'ADD_CATEGORY_LIST':
       return {
