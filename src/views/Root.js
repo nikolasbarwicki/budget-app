@@ -1,33 +1,43 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import styled, { ThemeProvider } from 'styled-components';
 
-import Navigation from 'components/Navigation';
+import Sidebar from 'components/Sidebar';
 import Dashboard from 'views/Dashboard';
-import BudgetPlanner from 'views/BudgetPlanner';
-import Transactions from 'views/Transactions';
 
 import { GlobalProvider } from 'context/GlobalState';
+import GlobalStyle from 'theme/GlobalStyle';
 
-const App = () => (
-  <>
-    <Router>
-      <GlobalProvider>
-        <Navigation />
-        <Switch>
-          <Route exact path="/">
+import { theme } from 'theme/mainTheme';
+
+const Wrapper = styled.div`
+  display: flex;
+  height: 100vh;
+`;
+
+const Grid = styled.div`
+  background-color: #f7f8fc;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: 56px 1fr 1fr;
+  grid-gap: 50px;
+  padding: 40px 80px;
+`;
+
+const Root = () => {
+  return (
+    <GlobalProvider>
+      <GlobalStyle />
+      <ThemeProvider theme={theme}>
+        <Wrapper>
+          <Sidebar />
+          <Grid>
             <Dashboard />
-          </Route>
-          <Route path="/budget">
-            <BudgetPlanner />
-          </Route>
-          <Route path="/transactions">
-            <Transactions />
-          </Route>
-        </Switch>
-      </GlobalProvider>
-    </Router>
-  </>
-);
+          </Grid>
+        </Wrapper>
+      </ThemeProvider>
+    </GlobalProvider>
+  );
+};
 
-export default App;
+export default Root;
