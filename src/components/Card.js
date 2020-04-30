@@ -6,9 +6,9 @@ const Wrapper = styled.div`
   height: 100%;
   border: 1px solid #dfdfdf;
   border-radius: 1.5rem;
-  -webkit-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.05);
   overflow: hidden;
 `;
 
@@ -28,6 +28,7 @@ const Title = styled.h4`
 
 const Content = styled.div`
   background-color: #fff;
+  padding: 2rem;
 `;
 
 const Card = ({ title, children }) => {

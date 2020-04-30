@@ -7,7 +7,7 @@ const LineChart = () => {
 
   const currExpenses = expenses[3];
 
-  Chart.defaults.global.defaultFontFamily = "'PT Sans', sans-serif";
+  Chart.defaults.global.defaultFontFamily = "'Raleway', sans-serif";
   Chart.defaults.global.legend.display = false;
   Chart.defaults.global.animation.duration = 1500;
 
@@ -50,7 +50,7 @@ const LineChart = () => {
 
   const options = {
     responsive: true,
-    maintainAspectRatio: false,
+    maintainAspectRatio: true,
     scales: {
       xAxes: [
         {
@@ -73,7 +73,7 @@ const LineChart = () => {
     },
   };
 
-  return <Line data={data} height={300} options={options} />;
+  return <Line data={data} options={options} />;
 };
 
 export default LineChart;

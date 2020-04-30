@@ -1,8 +1,10 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Sidebar from 'components/Sidebar';
 import Dashboard from 'views/Dashboard';
+import BudgetPlanner from 'views/BudgetPlanner';
 
 import { GlobalProvider } from 'context/GlobalState';
 import GlobalStyle from 'theme/GlobalStyle';
@@ -30,10 +32,16 @@ const Root = () => {
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <Wrapper>
-          <Sidebar />
-          <Grid>
-            <Dashboard />
-          </Grid>
+          <BrowserRouter>
+            <Sidebar />
+            <Grid>
+              <Switch>
+                <Route path="/" component={Dashboard} exact />
+                <Route path="/budget" component={BudgetPlanner} />
+                <Route component={Error} />
+              </Switch>
+            </Grid>
+          </BrowserRouter>
         </Wrapper>
       </ThemeProvider>
     </GlobalProvider>

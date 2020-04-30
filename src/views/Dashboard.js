@@ -7,7 +7,6 @@ import { ModalProvider } from 'context/modalContext';
 import CategoriesChart from 'components/CategoriesChart';
 
 const Header = styled.div`
-  background-color: red;
   grid-column: 1 / -1;
   display: flex;
   justify-content: space-between;
@@ -24,17 +23,14 @@ const TopLeft = styled.div`
 
 const TopRight = styled.div`
   grid-column: 7 / span 3;
-  background-color: blue;
 `;
 
 const BottomLeft = styled.div`
   grid-column: 1 / span 6;
-  background-color: blue;
 `;
 
 const BottomRight = styled.div`
   grid-column: 7 / span 3;
-  background-color: blue;
 `;
 
 const Dashboard = () => {
@@ -47,7 +43,9 @@ const Dashboard = () => {
         </ModalProvider>
       </Header>
       <TopLeft>
-        <LineChart />
+        <Card title="Dashboard">
+          <LineChart />
+        </Card>
       </TopLeft>
       <TopRight>
         <Card title="Budget Content">dupa</Card>
