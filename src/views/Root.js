@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Sidebar from 'components/Sidebar';
 import Dashboard from 'views/Dashboard';
 import BudgetPlanner from 'views/BudgetPlanner';
+import Transactions from 'views/Transactions';
 
 import { GlobalProvider } from 'context/GlobalState';
 import GlobalStyle from 'theme/GlobalStyle';
@@ -38,6 +39,7 @@ const Root = () => {
               <Switch>
                 <Route path="/" component={Dashboard} exact />
                 <Route path="/budget" component={BudgetPlanner} />
+                <Route path="/transactions" component={Transactions} />
                 <Route component={Error} />
               </Switch>
             </Grid>

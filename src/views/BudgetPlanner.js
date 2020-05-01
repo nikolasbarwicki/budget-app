@@ -17,16 +17,13 @@ const Heading = styled.h1`
   font-size: ${(props) => props.theme.fontSize.l};
 `;
 
-const TopLeft = styled.div`
+const Left = styled.div`
   grid-column: 1 / span 6;
+  grid-row: 2 / span 2;
 `;
 
 const TopRight = styled.div`
   grid-column: 7 / span 3;
-`;
-
-const BottomLeft = styled.div`
-  grid-column: 1 / span 6;
 `;
 
 const BottomRight = styled.div`
@@ -37,22 +34,19 @@ const Dashboard = () => {
   return (
     <>
       <Header>
-        <Heading>Budget</Heading>
+        <Heading>Budget planner</Heading>
         <ModalProvider>
           <ToggleModal />
         </ModalProvider>
       </Header>
-      <TopLeft>
-        <Card title="Dashboard">content</Card>
-      </TopLeft>
+      <Left>
+        <Card title="Budget categories">content</Card>
+      </Left>
       <TopRight>
-        <Card title="Budget Content">dupa</Card>
+        <Card title="Options">dupa</Card>
       </TopRight>
-      <BottomLeft>
-        <Card title="Last transactions">dupa</Card>
-      </BottomLeft>
       <BottomRight>
-        <Card title="Categories">
+        <Card title="Budget status">
           <CategoriesChart />
         </Card>
       </BottomRight>

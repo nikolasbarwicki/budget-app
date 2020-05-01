@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Doughnut, Chart } from 'react-chartjs-2';
 import { GlobalContext } from 'context/GlobalState';
-import moment from 'moment';
 
 Chart.defaults.global.legend.display = true;
 
@@ -11,10 +10,10 @@ const options = {
 };
 
 const CategoriesChart = () => {
-  const currMonth = moment().month();
+  // const currMonth = moment().month();
 
   const { expenses } = useContext(GlobalContext);
-  const currExpenses = expenses[currMonth];
+  const currExpenses = expenses[3];
 
   const categories = [
     ...new Set(
