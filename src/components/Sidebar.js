@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import MenuItem from 'components/MenuItem';
 
-import budgetIcon from 'assets/budgetIcon.png';
-import dashboardIcon from 'assets/dashboardIcon.png';
-import transactionsIcon from 'assets/transactionsIcon.png';
+import budgetIcon from 'assets/budgetIcon.svg';
+import dashboardIcon from 'assets/dashboardIcon.svg';
+import listIcon from 'assets/listIcon.svg';
 
 const Wrapper = styled.div`
   display: flex;
@@ -31,10 +30,6 @@ const Logo = styled.ul`
   justify-content: center;
 `;
 
-const StyledNavLink = styled(Link)`
-  text-decoration: none;
-`;
-
 const Sidebar = () => {
   return (
     <Wrapper>
@@ -42,19 +37,19 @@ const Sidebar = () => {
       <nav>
         <List>
           <li>
-            <StyledNavLink to="/">
-              <MenuItem src={dashboardIcon}>Dashboard</MenuItem>
-            </StyledNavLink>
+            <MenuItem exact to="/" src={dashboardIcon} activeClassName>
+              Dashboard
+            </MenuItem>
           </li>
           <li>
-            <StyledNavLink to="/budget">
-              <MenuItem src={budgetIcon}>Budget planner</MenuItem>
-            </StyledNavLink>
+            <MenuItem exact to="/budget" src={budgetIcon} activeClassName>
+              Budget planner
+            </MenuItem>
           </li>
           <li>
-            <StyledNavLink to="/transactions" activeclass="active">
-              <MenuItem src={transactionsIcon}>Trasactions</MenuItem>
-            </StyledNavLink>
+            <MenuItem exact to="/transactions" src={listIcon} activeClassName>
+              Trasactions
+            </MenuItem>
           </li>
         </List>
       </nav>

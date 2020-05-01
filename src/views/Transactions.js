@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import ToggleModal from 'components/ToggleModal';
 import Card from 'components/Card';
+import NewTransactionsList from 'components/NewTransactionsList';
+import TableFiltering from 'components/TableFiltering';
 
 import { ModalProvider } from 'context/modalContext';
 
@@ -30,6 +32,10 @@ const BottomRight = styled.div`
 `;
 
 const Transactions = () => {
+  const [categoryFilter, setCategoryFilter] = useState(null);
+  const [nameSearch, setNameSearch] = useState(null);
+  const [dateFilter, setDateFilter] = useState(null);
+
   return (
     <>
       <Header>
@@ -39,10 +45,25 @@ const Transactions = () => {
         </ModalProvider>
       </Header>
       <Left>
-        <Card title="Transactions">content</Card>
+        <Card title="Transactions">
+          <NewTransactionsList
+            dateFilter={dateFilter}
+            nameSearch={nameSearch}
+            categoryFilter={categoryFilter}
+          />
+        </Card>
       </Left>
       <TopRight>
-        <Card title="Filtering options">dupa</Card>
+        <Card title="Filtering options">
+          <TableFiltering
+            categoryFilter={categoryFilter}
+            nameSearch={nameSearch}
+            dateFilter={dateFilter}
+            setCategoryFilter={(value) => setCategoryFilter(value)}
+            setNameSearch={(value) => setNameSearch(value)}
+            setDateFilter={(value) => setDateFilter(value)}
+          />
+        </Card>
       </TopRight>
       <BottomRight>
         <Card title="Budget status">inne</Card>

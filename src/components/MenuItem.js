@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
-const Wrapper = styled.div`
+const Wrapper = styled(NavLink)`
   height: 10rem;
   display: grid;
   grid-template-columns: 7rem 1fr;
@@ -9,6 +10,12 @@ const Wrapper = styled.div`
   align-items: center;
   border-top: 1px solid #dfdfdf;
   cursor: pointer;
+  text-decoration: none;
+
+  &.active {
+    background-color: rgba(77, 124, 254, 0.1);
+    color: red !important;
+  }
 
   &:hover {
     background-color: rgba(77, 124, 254, 0.1);
@@ -17,6 +24,7 @@ const Wrapper = styled.div`
 
 const Icon = styled.img`
   justify-self: center;
+  color: ${(props) => props.theme.darkblue};
 `;
 
 const Text = styled.span`
@@ -26,9 +34,9 @@ const Text = styled.span`
   -webkit-text-decoration: none !important;
 `;
 
-const MenuItem = ({ children, src }) => {
+const MenuItem = ({ children, src, to }) => {
   return (
-    <Wrapper>
+    <Wrapper to={to}>
       <Icon src={src} />
       <Text>{children}</Text>
     </Wrapper>
