@@ -30,10 +30,10 @@ const Content = styled.div`
   background-color: #fff;
   padding: 2rem;
   height: 80%;
-  /* display: flex;
-  justify-content: center;
+  display: flex;
+
   flex-direction: column;
-  align-items: center; */
+  align-items: center;
 `;
 
 const Card = ({ title, children }) => {

@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import ToggleModal from 'components/ToggleModal';
 
 import Card from 'components/Card';
+import BudgetItems from 'components/BudgetItems';
 import { ModalProvider } from 'context/modalContext';
-import CategoriesChart from 'components/CategoriesChart';
+import BudgetOptions from 'components/BudgetOptions';
 
 const Header = styled.div`
   grid-column: 1 / -1;
@@ -40,15 +41,17 @@ const Dashboard = () => {
         </ModalProvider>
       </Header>
       <Left>
-        <Card title="Budget categories">content</Card>
+        <Card title="Budget categories">
+          <BudgetItems />
+        </Card>
       </Left>
       <TopRight>
-        <Card title="Options">dupa</Card>
+        <Card title="Options">
+          <BudgetOptions />
+        </Card>
       </TopRight>
       <BottomRight>
-        <Card title="Budget status">
-          <CategoriesChart />
-        </Card>
+        <Card title="Budget status">Budget status</Card>
       </BottomRight>
     </>
   );

@@ -2,6 +2,19 @@ import React, { useContext } from 'react';
 import NumberFormat from 'react-number-format';
 import { GlobalContext } from 'context/GlobalState';
 import moment from 'moment';
+import styled from 'styled-components';
+
+const StyledLabel = styled.label`
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledInput = styled(NumberFormat)`
+  height: 4rem;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  border: 1px solid ${(props) => props.theme.gray};
+`;
 
 const IncomeInput = () => {
   const currMonth = moment().month();
@@ -10,21 +23,19 @@ const IncomeInput = () => {
   const currIncome = income[currMonth];
 
   return (
-    <div>
-      <label htmlFor="monthyIncome">
-        This month income:
-        <NumberFormat
-          id="monthyIncome"
-          value={currIncome}
-          thousandSeparator
-          prefix="$"
-          decimalScale="2"
-          onValueChange={({ value }) => {
-            updateIncome(value);
-          }}
-        />
-      </label>
-    </div>
+    <StyledLabel htmlFor="monthlyIncome">
+      This month income:
+      <StyledInput
+        id="monthlyIncome"
+        value={currIncome}
+        thousandSeparator
+        prefix="$"
+        decimalScale="2"
+        onValueChange={({ value }) => {
+          updateIncome(value);
+        }}
+      />
+    </StyledLabel>
   );
 };
 

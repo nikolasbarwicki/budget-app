@@ -66,7 +66,7 @@ const Transactions = () => {
         </Card>
       </TopRight>
       <BottomRight>
-        <Card title="Budget status">inne</Card>
+        <Card title="Budget status">Budget status</Card>
       </BottomRight>
     </>
   );

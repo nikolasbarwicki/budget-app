@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ToggleModal from 'components/ToggleModal';
 import LineChart from 'components/LineChart';
+import NewTransactionsList from 'components/NewTransactionsList';
 import Card from 'components/Card';
 import { ModalProvider } from 'context/modalContext';
 import CategoriesChart from 'components/CategoriesChart';
@@ -48,15 +49,17 @@ const Dashboard = () => {
         </Card>
       </TopLeft>
       <TopRight>
-        <Card title="Budget Content">dupa</Card>
-      </TopRight>
-      <BottomLeft>
-        <Card title="Last transactions">dupa</Card>
-      </BottomLeft>
-      <BottomRight>
         <Card title="Categories">
           <CategoriesChart />
         </Card>
+      </TopRight>
+      <BottomLeft>
+        <Card title="Last transactions">
+          <NewTransactionsList noDelete noHead />
+        </Card>
+      </BottomLeft>
+      <BottomRight>
+        <Card title="Budget status">Budget status</Card>
       </BottomRight>
     </>
   );

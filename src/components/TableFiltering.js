@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import styled from 'styled-components';
+import Input from 'components/Input';
 
 const Wrapper = styled.div`
   padding: 0 5rem;
@@ -16,13 +17,9 @@ const StyledSelect = styled.select`
   padding: 1rem;
   border-radius: 1.5rem;
   border: 1px solid ${(props) => props.theme.gray};
-`;
-
-const StyledInput = styled.input`
-  height: 4rem;
-  padding: 1rem;
-  border-radius: 1.5rem;
-  border: 1px solid ${(props) => props.theme.gray};
+  font-family: inherit;
+  font-weight: ${(props) => props.theme.bold};
+  color: inherit;
 `;
 
 const StyledLabel = styled.label`
@@ -74,14 +71,12 @@ const TableFiltering = ({
           <option value="Car">Car</option>
         </StyledSelect>
       </StyledLabel>
-      <StyledLabel>
-        Search by name:
-        <StyledInput
-          type="text"
-          value={nameSearch}
-          onChange={(e) => setNameSearch(e.target.value)}
-        />
-      </StyledLabel>
+
+      <Input
+        label="Search by name"
+        value={nameSearch}
+        onChange={(e) => setNameSearch(e.target.value)}
+      />
 
       <div>
         <p>Filter by date</p>

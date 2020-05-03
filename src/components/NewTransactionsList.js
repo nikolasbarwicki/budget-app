@@ -72,7 +72,14 @@ const StyledSortButton = styled.button`
   cursor: pointer;
 `;
 
-const ProductTable = ({ data, categoryFilter, nameSearch, dateFilter, deleteTransaction }) => {
+const ProductTable = ({
+  data,
+  categoryFilter,
+  nameSearch,
+  dateFilter,
+  deleteTransaction,
+  noDelete,
+}) => {
   const { items, requestSort, sortConfig } = useSortableData(data);
   const getClassNamesFor = (name) => {
     if (!sortConfig) {
@@ -96,66 +103,82 @@ const ProductTable = ({ data, categoryFilter, nameSearch, dateFilter, deleteTran
 
   return (
     <StyledTable>
-      <thead>
-        <tr>
-          <th>
-            <StyledSortButton
-              type="button"
-              onClick={() => requestSort('name')}
-              className={getClassNamesFor('name')}
-            >
-              Name
-            </StyledSortButton>
-          </th>
-          <th>
-            <StyledSortButton
-              type="button"
-              onClick={() => requestSort('category')}
-              className={getClassNamesFor('category')}
-            >
-              Category
-            </StyledSortButton>
-          </th>
-          <th>
-            <StyledSortButton
-              type="button"
-              onClick={() => requestSort('date')}
-              className={getClassNamesFor('date')}
-            >
-              Date
-            </StyledSortButton>
-          </th>
-          <th>
-            <StyledSortButton
-              bold
-              type="button"
-              onClick={() => requestSort('amount')}
-              className={getClassNamesFor('amount')}
-            >
-              Amount
-            </StyledSortButton>
-          </th>
-          <th>Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        {filtered.map((item) => (
-          <StyledTr key={item.id}>
-            <StyledTd>{item.name}</StyledTd>
-            <StyledTd>{item.category}</StyledTd>
-            <StyledTd>{moment.unix(item.date).format('DD/MM/YYYY')}</StyledTd>
-            <StyledTd bold>${item.amount.toFixed(2)}</StyledTd>
-            <StyledTd>
-              <StyledDelete type="button" onClick={() => deleteTransaction(item.id)} />
-            </StyledTd>
-          </StyledTr>
-        ))}
-      </tbody>
+      {noDelete ? null : (
+        <thead>
+          <tr>
+            <th>
+              <StyledSortButton
+                type="button"
+                onClick={() => requestSort('name')}
+                className={getClassNamesFor('name')}
+              >
+                Name
+              </StyledSortButton>
+            </th>
+            <th>
+              <StyledSortButton
+                type="button"
+                onClick={() => requestSort('category')}
+                className={getClassNamesFor('category')}
+              >
+                Category
+              </StyledSortButton>
+            </th>
+            <th>
+              <StyledSortButton
+                type="button"
+                onClick={() => requestSort('date')}
+                className={getClassNamesFor('date')}
+              >
+                Date
+              </StyledSortButton>
+            </th>
+            <th>
+              <StyledSortButton
+                bold
+                type="button"
+                onClick={() => requestSort('amount')}
+                className={getClassNamesFor('amount')}
+              >
+                Amount
+              </StyledSortButton>
+            </th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+      )}
+
+      {noDelete ? (
+        <tbody>
+          {filtered.splice(1, 6).map((item) => (
+            <StyledTr key={item.id}>
+              <StyledTd>{item.name}</StyledTd>
+              <StyledTd>{item.category}</StyledTd>
+              <StyledTd>{moment.unix(item.date).format('DD/MM/YYYY')}</StyledTd>
+              <StyledTd bold>${item.amount.toFixed(2)}</StyledTd>
+            </StyledTr>
+          ))}
+        </tbody>
+      ) : (
+        <tbody>
+          {filtered.map((item) => (
+            <StyledTr key={item.id}>
+              <StyledTd>{item.name}</StyledTd>
+              <StyledTd>{item.category}</StyledTd>
+              <StyledTd>{moment.unix(item.date).format('DD/MM/YYYY')}</StyledTd>
+              <StyledTd bold>${item.amount.toFixed(2)}</StyledTd>
+              <StyledTd>
+                <StyledDelete type="button" onClick={() => deleteTransaction(item.id)} />
+              </StyledTd>
+            </StyledTr>
+          ))}
+        </tbody>
+      )}
     </StyledTable>
   );
 };
 
-export default function App({ dateFilter, nameSearch, categoryFilter }) {
+export default function App({ dateFilter, nameSearch, categoryFilter, noDelete }) {
   const { expenses, deleteTransaction } = useContext(GlobalContext);
 
   const currExpenses = expenses[3];
@@ -167,6 +190,7 @@ export default function App({ dateFilter, nameSearch, categoryFilter }) {
       categoryFilter={categoryFilter}
       data={currExpenses}
       deleteTransaction={deleteTransaction}
+      noDelete={noDelete}
     />
   );
 }
