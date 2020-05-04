@@ -56,14 +56,22 @@ const LineChart = () => {
         {
           ticks: { display: true },
           gridLines: {
-            display: true,
-            drawBorder: true,
+            display: false,
+            drawBorder: false,
           },
         },
       ],
       yAxes: [
         {
-          ticks: { display: true, suggestedMin: 0, suggestedMax: 2000, stepSize: 500 },
+          ticks: {
+            display: true,
+            suggestedMin: 0,
+            suggestedMax: 2000,
+            stepSize: 500,
+            userCallback(value) {
+              return `$${value}`;
+            },
+          },
           gridLines: {
             display: true,
             drawBorder: true,
@@ -71,9 +79,27 @@ const LineChart = () => {
         },
       ],
     },
+    legend: {
+      display: true,
+      position: 'top',
+      align: 'end',
+      labels: {
+        fontColor: '#3D454E',
+        boxWidth: 13,
+      },
+    },
+    tooltips: {
+      intersect: false,
+      callbacks: {
+        label(tooltipItem, chart) {
+          const datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+          return `${datasetLabel}: $${tooltipItem.yLabel}`;
+        },
+      },
+    },
   };
 
-  return <Line data={data} height={80} options={options} />;
+  return <Line data={data} height={100} options={options} />;
 };
 
 export default LineChart;
