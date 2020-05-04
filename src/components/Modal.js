@@ -20,7 +20,7 @@ const Overlay = styled.div`
 const Dialog = styled.div`
   background: white;
   border-radius: 5px;
-  padding: 20px;
+  padding: 5rem;
   position: absolute;
   top: 50%;
   left: 50%;
