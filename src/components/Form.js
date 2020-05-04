@@ -3,7 +3,6 @@ import { Formik } from 'formik';
 import { GlobalContext } from 'context/GlobalState';
 import { ModalContext } from 'context/modalContext';
 import NumberInput from 'components/NumberInput';
-import Input from 'components/Input';
 import cuid from 'cuid';
 import styled, { css } from 'styled-components';
 
@@ -111,7 +110,7 @@ const Form = () => {
 
             <StyledLabel htmlFor="name">
               Name
-              <Input
+              <StyledInput
                 id="name"
                 name="name"
                 type="text"

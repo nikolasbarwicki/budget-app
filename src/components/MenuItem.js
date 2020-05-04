@@ -11,10 +11,22 @@ const Wrapper = styled(NavLink)`
   border-top: 1px solid #dfdfdf;
   cursor: pointer;
   text-decoration: none;
+  outline: none;
+  transition: background-color 0.3s;
 
   &.active {
     background-color: rgba(77, 124, 254, 0.1);
-    color: red !important;
+
+    & > svg {
+      fill: ${(props) => props.theme.blue};
+
+      transition: fill 0.3s;
+    }
+
+    & > span {
+      color: ${(props) => props.theme.blue};
+      transition: color 0.3s;
+    }
   }
 
   &:hover {
@@ -22,9 +34,16 @@ const Wrapper = styled(NavLink)`
   }
 `;
 
-const Icon = styled.img`
+const Icon = styled.svg`
+  width: 2.5rem;
   justify-self: center;
-  color: ${(props) => props.theme.darkblue};
+  fill: #b6b8c0;
+  outline: none;
+
+  &.active {
+    background-color: rgba(77, 124, 254, 0.1);
+    fill: ${(props) => props.theme.blue};
+  }
 `;
 
 const Text = styled.span`
@@ -34,10 +53,12 @@ const Text = styled.span`
   -webkit-text-decoration: none !important;
 `;
 
-const MenuItem = ({ children, src, to }) => {
+const MenuItem = ({ children, href, to }) => {
   return (
-    <Wrapper to={to}>
-      <Icon src={src} />
+    <Wrapper exact to={to}>
+      <Icon>
+        <use href={href} />
+      </Icon>
       <Text>{children}</Text>
     </Wrapper>
   );

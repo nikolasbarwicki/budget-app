@@ -99,7 +99,7 @@ const LineChart = () => {
     },
   };
 
-  return <Line data={data} height={100} options={options} />;
+  return <Line data={data} height={90} options={options} />;
 };
 
 export default LineChart;

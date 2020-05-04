@@ -2,9 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import MenuItem from 'components/MenuItem';
 
-import budgetIcon from 'assets/budgetIcon.svg';
-import dashboardIcon from 'assets/dashboardIcon.svg';
-import listIcon from 'assets/listIcon.svg';
+import icons from 'assets/icons-sprite.svg';
 
 const Wrapper = styled.div`
   display: flex;
@@ -37,17 +35,17 @@ const Sidebar = () => {
       <nav>
         <List>
           <li>
-            <MenuItem exact to="/" src={dashboardIcon} activeClassName>
+            <MenuItem exact to="/" href={`${icons}#dashboard`} activeClassName>
               Dashboard
             </MenuItem>
           </li>
           <li>
-            <MenuItem exact to="/budget" src={budgetIcon} activeClassName>
+            <MenuItem to="/budget" href={`${icons}#budget`} activeClassName>
               Budget planner
             </MenuItem>
           </li>
           <li>
-            <MenuItem exact to="/transactions" src={listIcon} activeClassName>
+            <MenuItem to="/transactions" href={`${icons}#list-text`} activeClassName>
               Trasactions
             </MenuItem>
           </li>
