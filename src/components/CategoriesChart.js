@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
-import { Doughnut, Chart } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 import { GlobalContext } from 'context/GlobalState';
-
-Chart.defaults.global.legend.display = true;
 
 const options = {
   responsive: true,
   maintainAspectRatio: false,
+  legend: {
+    display: true,
+    position: 'right',
+  },
 };
 
 const CategoriesChart = () => {
@@ -39,13 +41,7 @@ const CategoriesChart = () => {
       datasets: [
         {
           label: 'Income',
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.5)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(44, 130, 201, 1)',
-          ],
+          backgroundColor: ['#D83D7E', '#4C7EE8', '#3C424D', '#1F2158', '#76A3D0'],
           data: categoryExpenses,
         },
       ],
