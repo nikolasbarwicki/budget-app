@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ToggleModal from 'components/ToggleModal';
 import LineChart from 'components/LineChart';
 import NewTransactionsList from 'components/NewTransactionsList';
+import BudgetStatus from 'components/BudgetStatus';
 import Card from 'components/Card';
 import { ModalProvider } from 'context/modalContext';
 import CategoriesChart from 'components/CategoriesChart';
@@ -59,7 +60,9 @@ const Dashboard = () => {
         </Card>
       </BottomLeft>
       <BottomRight>
-        <Card title="Budget status">Budget status</Card>
+        <Card title="Budget status">
+          <BudgetStatus />
+        </Card>
       </BottomRight>
     </>
   );

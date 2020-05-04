@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import ToggleModal from 'components/ToggleModal';
 import Card from 'components/Card';
+import BudgetStatus from 'components/BudgetStatus';
 import NewTransactionsList from 'components/NewTransactionsList';
 import TableFiltering from 'components/TableFiltering';
 
@@ -66,7 +67,9 @@ const Transactions = () => {
         </Card>
       </TopRight>
       <BottomRight>
-        <Card title="Budget status">Budget status</Card>
+        <Card title="Budget status">
+          <BudgetStatus />
+        </Card>
       </BottomRight>
     </>
   );

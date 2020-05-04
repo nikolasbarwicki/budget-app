@@ -4,6 +4,7 @@ import ToggleModal from 'components/ToggleModal';
 
 import Card from 'components/Card';
 import BudgetItems from 'components/BudgetItems';
+import BudgetStatus from 'components/BudgetStatus';
 import { ModalProvider } from 'context/modalContext';
 import BudgetOptions from 'components/BudgetOptions';
 
@@ -51,7 +52,9 @@ const Dashboard = () => {
         </Card>
       </TopRight>
       <BottomRight>
-        <Card title="Budget status">Budget status</Card>
+        <Card title="Budget status">
+          <BudgetStatus />
+        </Card>
       </BottomRight>
     </>
   );

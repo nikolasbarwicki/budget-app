@@ -82,7 +82,7 @@ const BudgetOptions = () => {
           decimalScale="2"
           placeholder="Set this month income..."
           onValueChange={({ value }) => {
-            updateIncome(value);
+            updateIncome(parseInt(value, 10));
           }}
         />
       </StyledLabel>
