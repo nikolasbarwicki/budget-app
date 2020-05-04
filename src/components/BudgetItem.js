@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from 'context/GlobalState';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import deleteIcon from 'assets/deleteIcon.png';
 
 const Wrapper = styled.div`
@@ -45,9 +45,22 @@ const StyledAmount = styled.span`
 const ProgressBar = styled.div`
   height: 1.1rem;
   width: 23rem;
-  background-color: ${(props) => props.theme.red};
+  background-color: ${(props) => props.theme.gray};
   border-radius: 2rem;
   margin: 0 3.5rem;
+  overflow: hidden;
+`;
+
+const PrgoressBarInside = styled.div`
+  height: 100%;
+  width: ${({ width }) => `${width}%`};
+  background-color: ${(props) => props.theme.blue};
+
+  ${({ width }) =>
+    width >= 100 &&
+    css`
+      background-color: ${(props) => props.theme.red};
+    `}
 `;
 
 const BudgetItem = ({ category, amount, spent, id }) => {
@@ -60,7 +73,9 @@ const BudgetItem = ({ category, amount, spent, id }) => {
         <StyledAmount>${spent}</StyledAmount>
         <span>Spent</span>
       </AmountBox>
-      <ProgressBar />
+      <ProgressBar>
+        <PrgoressBarInside width={(spent / amount) * 100} />
+      </ProgressBar>
       <AmountBox>
         <StyledAmount>${amount}</StyledAmount>
         <span>Planned</span>
