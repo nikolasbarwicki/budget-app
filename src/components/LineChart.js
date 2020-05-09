@@ -5,7 +5,7 @@ import { GlobalContext } from 'context/GlobalState';
 const LineChart = () => {
   const { income, expense, expenses, updateExpense } = useContext(GlobalContext);
 
-  const currExpenses = expenses[3];
+  const currExpenses = expenses[4];
 
   Chart.defaults.global.defaultFontFamily = "'Raleway', sans-serif";
   Chart.defaults.global.legend.display = false;
@@ -30,7 +30,7 @@ const LineChart = () => {
     gradientRed.addColorStop(1, 'rgba(255, 255, 255, 0)');
 
     return {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr'],
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
       datasets: [
         {
           label: 'Income',

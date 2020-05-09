@@ -68,7 +68,7 @@ const StyledNumberFormat = styled(NumberFormat)`
 const BudgetOptions = () => {
   const { addCategory, income, updateIncome } = useContext(GlobalContext);
 
-  const currIncome = income[3];
+  const currIncome = income[4];
 
   return (
     <Wrapper>

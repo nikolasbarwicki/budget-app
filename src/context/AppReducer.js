@@ -4,29 +4,29 @@ export default (state, action) => {
       return {
         ...state,
         expenses: [
-          ...state.expenses.slice(0, 3),
-          state.expenses[3].filter((item) => item.id !== action.payload),
+          ...state.expenses.slice(0, 4),
+          state.expenses[4].filter((item) => item.id !== action.payload),
         ],
       };
     case 'ADD_TRANSACTION':
       return {
         ...state,
-        expenses: [...state.expenses.slice(0, 3), [...state.expenses[3], action.payload]],
+        expenses: [...state.expenses.slice(0, 4), [...state.expenses[4], action.payload]],
       };
     case 'UPDATE_INCOME':
       return {
         ...state,
-        income: [...state.income.slice(0, 3), action.payload],
+        income: [...state.income.slice(0, 4), action.payload],
       };
     case 'UPDATE_EXPENSE':
       return {
         ...state,
-        expense: [...state.expense.slice(0, 3), action.payload],
+        expense: [...state.expense.slice(0, 4), action.payload],
       };
     case 'ADD_CATEGORY':
       return {
         ...state,
-        budget: [...state.budget.slice(0, 3), [...state.budget[3], action.payload]],
+        budget: [...state.budget.slice(0, 4), [...state.budget[4], action.payload]],
       };
     case 'ADD_CATEGORY_LIST':
       return {
@@ -37,8 +37,8 @@ export default (state, action) => {
       return {
         ...state,
         budget: [
-          ...state.budget.slice(0, 3),
-          state.budget[3].filter((item) => item.id !== action.payload),
+          ...state.budget.slice(0, 4),
+          state.budget[4].filter((item) => item.id !== action.payload),
         ],
       };
     case 'DELETE_CATEGORY_LIST':

@@ -25,9 +25,9 @@ const StyledAmount = styled.span`
 const BudgetStatus = () => {
   const { expenses, budget, income } = useContext(GlobalContext);
 
-  const currExpenses = expenses[3];
-  const currBudget = budget[3];
-  const currIncome = income[3];
+  const currExpenses = expenses[4];
+  const currBudget = budget[4];
+  const currIncome = income[4];
 
   const spent = currExpenses.reduce((sum, item) => {
     return sum + item.amount;

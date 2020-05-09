@@ -15,8 +15,8 @@ const BudgetItems = () => {
 
   const { budget, expenses } = useContext(GlobalContext);
 
-  const currBudget = budget[3];
-  const currExpenses = expenses[3];
+  const currBudget = budget[4];
+  const currExpenses = expenses[4];
 
   const calcCategoryExpenses = (cat) => {
     return [...currExpenses.filter(({ category }) => category === cat)].reduce((sum, item) => {

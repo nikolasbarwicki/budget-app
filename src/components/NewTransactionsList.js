@@ -154,7 +154,7 @@ const ProductTable = ({
             <StyledTr key={item.id}>
               <StyledTd>{item.name}</StyledTd>
               <StyledTd>{item.category}</StyledTd>
-              <StyledTd>{moment.unix(item.date).format('DD/MM/YYYY')}</StyledTd>
+              <StyledTd>{moment(item.date).format('DD/MM/YYYY')}</StyledTd>
               <StyledTd bold>${item.amount.toFixed(2)}</StyledTd>
             </StyledTr>
           ))}
@@ -165,7 +165,7 @@ const ProductTable = ({
             <StyledTr key={item.id}>
               <StyledTd>{item.name}</StyledTd>
               <StyledTd>{item.category}</StyledTd>
-              <StyledTd>{moment.unix(item.date).format('DD/MM/YYYY')}</StyledTd>
+              <StyledTd>{moment(item.date).format('DD/MM/YYYY')}</StyledTd>
               <StyledTd bold>${item.amount.toFixed(2)}</StyledTd>
               <StyledTd>
                 <StyledDelete type="button" onClick={() => deleteTransaction(item.id)} />
@@ -181,7 +181,7 @@ const ProductTable = ({
 export default function App({ dateFilter, nameSearch, categoryFilter, noDelete }) {
   const { expenses, deleteTransaction } = useContext(GlobalContext);
 
-  const currExpenses = expenses[3];
+  const currExpenses = expenses[4];
 
   return (
     <ProductTable

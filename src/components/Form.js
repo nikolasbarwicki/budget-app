@@ -73,16 +73,17 @@ const Form = () => {
   const { addTransaction, categories, updateExpense, expenses } = useContext(GlobalContext);
   const { handleModal } = useContext(ModalContext);
 
-  const currExpenses = expenses[3];
+  const currExpenses = expenses[4];
 
   return (
     <div>
       <StyledHeading>Add new transaction</StyledHeading>
       <Formik
-        initialValues={{ id: cuid.slug(), category: 'Food', name: '', date: '', amount: '' }}
+        initialValues={{ id: cuid.slug(), category: 'Food', name: '', date: 0, amount: '' }}
         onSubmit={(values) => {
           addTransaction(values);
           console.log(values);
+
           const spent = currExpenses.reduce((sum, item) => {
             return sum + item.amount;
           }, 0);
@@ -127,6 +128,7 @@ const Form = () => {
                 type="date"
                 onChange={props.handleChange}
                 value={props.values.date}
+                parse={props.parse}
               />
             </StyledLabel>
 
