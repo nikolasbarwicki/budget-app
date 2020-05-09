@@ -4,7 +4,7 @@ import moment from 'moment';
 import styled from 'styled-components';
 import deleteIcon from 'assets/deleteIcon.png';
 
-const useSortableData = (items, config = null) => {
+const useSortableData = (items, config = { key: 'date', direction: 'descending' }) => {
   const [sortConfig, setSortConfig] = React.useState(config);
 
   const sortedItems = React.useMemo(() => {
@@ -24,9 +24,9 @@ const useSortableData = (items, config = null) => {
   }, [items, sortConfig]);
 
   const requestSort = (key) => {
-    let direction = 'ascending';
-    if (sortConfig && sortConfig.key === key && sortConfig.direction === 'ascending') {
-      direction = 'descending';
+    let direction = 'descending';
+    if (sortConfig && sortConfig.key === key && sortConfig.direction === 'descending') {
+      direction = 'ascending';
     }
     setSortConfig({ key, direction });
   };
