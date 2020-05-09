@@ -15,7 +15,7 @@ const CategoriesChart = () => {
   // const currMonth = moment().month();
 
   const { expenses } = useContext(GlobalContext);
-  const currExpenses = expenses[3];
+  const currExpenses = expenses[4];
 
   const categories = [
     ...new Set(
