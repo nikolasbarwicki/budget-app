@@ -15,7 +15,7 @@ const Circle = styled.path`
   fill: none;
   stroke-width: 2.8;
   stroke-linecap: round;
-  animation: progress 1s ease-out forwards;
+  transition: stroke-dasharray 0.4s;
   stroke: ${(props) => (props.over100 ? props.theme.red : props.theme.blue)};
 `;
 
