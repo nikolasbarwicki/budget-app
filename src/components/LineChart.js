@@ -17,6 +17,7 @@ const LineChart = () => {
     }, 0);
 
     updateExpense(spent);
+    // eslint-disable-next-line
   }, [currExpenses]);
 
   const data = (canvas) => {
@@ -50,7 +51,7 @@ const LineChart = () => {
 
   const options = {
     responsive: true,
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
     scales: {
       xAxes: [
         {
@@ -99,7 +100,7 @@ const LineChart = () => {
     },
   };
 
-  return <Line data={data} height={90} options={options} />;
+  return <Line data={data} options={options} />;
 };
 
 export default LineChart;

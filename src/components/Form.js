@@ -10,6 +10,10 @@ const StyledForm = styled.form`
   display: grid;
   width: 40rem;
   grid-gap: 2rem;
+
+  @media only screen and (max-width: 420px) {
+    width: 75vw;
+  }
 `;
 
 const StyledSelect = styled.select`

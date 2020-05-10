@@ -53,9 +53,9 @@ const Text = styled.span`
   -webkit-text-decoration: none !important;
 `;
 
-const MenuItem = ({ children, href, to }) => {
+const MenuItem = ({ children, href, to, onClick }) => {
   return (
-    <Wrapper exact to={to}>
+    <Wrapper onClick={onClick} exact to={to}>
       <Icon>
         <use href={href} />
       </Icon>

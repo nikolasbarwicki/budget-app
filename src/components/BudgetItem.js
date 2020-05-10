@@ -13,6 +13,11 @@ const Wrapper = styled.div`
   height: 8rem;
   padding: 2rem;
   border-bottom: 1px solid ${(props) => props.theme.gray};
+
+  @media only screen and (max-width: 420px) {
+    padding: 0;
+    grid-template-columns: 40% repeat(2, 1fr) 3rem;
+  }
 `;
 
 const AmountBox = styled.div`
@@ -44,11 +49,15 @@ const StyledAmount = styled.span`
 
 const ProgressBar = styled.div`
   height: 1.1rem;
-  width: 23rem;
+  width: 15vw;
   background-color: ${(props) => props.theme.gray};
   border-radius: 2rem;
   margin: 0 3.5rem;
   overflow: hidden;
+
+  @media only screen and (max-width: 420px) {
+    display: none;
+  }
 `;
 
 const PrgoressBarInside = styled.div`

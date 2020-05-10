@@ -13,6 +13,11 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media only screen and (max-width: 420px) {
+    padding: 0 2rem;
+    visibility: hidden;
+  }
 `;
 
 const Heading = styled.h1`
@@ -22,14 +27,34 @@ const Heading = styled.h1`
 const Left = styled.div`
   grid-column: 1 / span 6;
   grid-row: 2 / span 2;
+
+  @media only screen and (max-width: 1200px) {
+    grid-column: 1 / span 12;
+  }
 `;
 
 const TopRight = styled.div`
   grid-column: 7 / span 3;
+
+  @media only screen and (max-width: 1200px) {
+    grid-column: 1 / span 5;
+  }
+
+  @media only screen and (max-width: 420px) {
+    grid-column: 1 / span 12;
+  }
 `;
 
 const BottomRight = styled.div`
   grid-column: 7 / span 3;
+
+  @media only screen and (max-width: 1200px) {
+    grid-column: 6 / span 5;
+  }
+
+  @media only screen and (max-width: 420px) {
+    grid-column: 1 / span 12;
+  }
 `;
 
 const Dashboard = () => {

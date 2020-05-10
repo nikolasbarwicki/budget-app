@@ -11,6 +11,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: stretch;
+
+  @media only screen and (max-width: 420px) {
+    padding: 1rem 2rem;
+  }
 `;
 
 const StyledSelect = styled.select`
@@ -33,6 +37,10 @@ const ButtonsWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1.2rem;
+
+  @media only screen and (max-width: 420px) {
+    grid-gap: 0.6rem;
+  }
 `;
 
 const StyledRadio = styled.label`
@@ -49,6 +57,10 @@ const StyledRadio = styled.label`
 
   &:hover {
     background-color: rgba(77, 124, 254, 0.1);
+  }
+
+  @media only screen and (max-width: 420px) {
+    font-size: 1.2rem;
   }
 `;
 

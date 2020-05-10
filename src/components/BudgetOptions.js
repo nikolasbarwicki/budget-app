@@ -13,6 +13,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: stretch;
+
+  @media only screen and (max-width: 420px) {
+    padding: 0;
+  }
 `;
 
 const StyledForm = styled.form`

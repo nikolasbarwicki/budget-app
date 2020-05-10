@@ -10,6 +10,10 @@ const Wrapper = styled.div`
   -moz-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.05);
   box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.05);
   overflow: hidden;
+
+  @media only screen and (max-width: 420px) {
+    border-radius: 0;
+  }
 `;
 
 const Heading = styled.div`

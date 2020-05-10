@@ -26,6 +26,10 @@ const Dialog = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 5;
+
+  @media only screen and (max-width: 420px) {
+    padding: 2rem;
+  }
 `;
 
 const Modal = () => {

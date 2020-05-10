@@ -36,6 +36,10 @@ const useSortableData = (items, config = { key: 'date', direction: 'descending' 
 
 const StyledTable = styled.table`
   width: 90%;
+
+  @media only screen and (max-width: 420px) {
+    width: 100%;
+  }
 `;
 
 const StyledTr = styled.tr`
@@ -51,6 +55,20 @@ const StyledTd = styled.td`
     props.bold &&
     `
     font-weight: ${props.theme.bold}
+  `}
+
+  ${(props) =>
+    props.mobile &&
+    `
+    display: none;
+  `}
+`;
+
+const StyledTh = styled.th`
+  ${(props) =>
+    props.mobile &&
+    `
+    display: none;
   `}
 `;
 
@@ -93,7 +111,7 @@ const ProductTable = ({
     return array.filter((item) => {
       return (
         (catFilter ? item.category === catFilter : true) &&
-        (term ? item.name.includes(term) : true) &&
+        (term ? item.name.toLowerCase().includes(term) : true) &&
         (date ? moment(item.date).format('DD/MM/YYYY') >= date : true)
       );
     });
@@ -115,7 +133,7 @@ const ProductTable = ({
                 Name
               </StyledSortButton>
             </th>
-            <th>
+            <StyledTh mobile>
               <StyledSortButton
                 type="button"
                 onClick={() => requestSort('category')}
@@ -123,7 +141,7 @@ const ProductTable = ({
               >
                 Category
               </StyledSortButton>
-            </th>
+            </StyledTh>
             <th>
               <StyledSortButton
                 type="button"
@@ -150,10 +168,10 @@ const ProductTable = ({
 
       {noDelete ? (
         <tbody>
-          {filtered.splice(1, 6).map((item) => (
+          {filtered.splice(0, 6).map((item) => (
             <StyledTr key={item.id}>
               <StyledTd>{item.name}</StyledTd>
-              <StyledTd>{item.category}</StyledTd>
+              <StyledTd mobile>{item.category}</StyledTd>
               <StyledTd>{moment(item.date).format('DD/MM/YYYY')}</StyledTd>
               <StyledTd bold>${item.amount.toFixed(2)}</StyledTd>
             </StyledTr>
@@ -164,7 +182,7 @@ const ProductTable = ({
           {filtered.map((item) => (
             <StyledTr key={item.id}>
               <StyledTd>{item.name}</StyledTd>
-              <StyledTd>{item.category}</StyledTd>
+              <StyledTd mobile>{item.category}</StyledTd>
               <StyledTd>{moment(item.date).format('DD/MM/YYYY')}</StyledTd>
               <StyledTd bold>${item.amount.toFixed(2)}</StyledTd>
               <StyledTd>

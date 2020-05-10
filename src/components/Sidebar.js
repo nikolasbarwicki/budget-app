@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import MenuItem from 'components/MenuItem';
+import MobileNav from 'components/MobileNav';
 
 import icons from 'assets/icons-sprite.svg';
 
@@ -13,6 +14,10 @@ const Wrapper = styled.div`
   -moz-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
   border-style: 1px solid #dfdfdf;
+
+  @media only screen and (max-width: 768px) {
+    display: flex;
+  }
 `;
 
 const List = styled.ul`
@@ -26,13 +31,23 @@ const Logo = styled.ul`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media only screen and (max-width: 768px) {
+    height: 10vh;
+  }
+`;
+
+const FullNav = styled.div`
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const Sidebar = () => {
   return (
     <Wrapper>
-      <Logo>Budgety</Logo>
-      <nav>
+      <FullNav>
+        <Logo>LOGO</Logo>
         <List>
           <li>
             <MenuItem exact to="/" href={`${icons}#dashboard`} activeClassName>
@@ -50,7 +65,9 @@ const Sidebar = () => {
             </MenuItem>
           </li>
         </List>
-      </nav>
+      </FullNav>
+
+      <MobileNav />
     </Wrapper>
   );
 };

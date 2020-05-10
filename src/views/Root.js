@@ -14,10 +14,16 @@ import { theme } from 'theme/mainTheme';
 
 const Wrapper = styled.div`
   display: flex;
-  height: 100vh;
+  height: 100%;
+
+  @media only screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const Grid = styled.div`
+  min-height: 100vh;
   background-color: #f7f8fc;
   width: 100%;
   display: grid;
@@ -25,6 +31,16 @@ const Grid = styled.div`
   grid-template-rows: 56px 1fr 1fr;
   grid-gap: 50px;
   padding: 40px 80px;
+
+  @media only screen and (max-width: 1200px) {
+    grid-gap: 20px;
+    padding: 40px 40px;
+  }
+
+  @media only screen and (max-width: 420px) {
+    grid-gap: 20px;
+    padding: 40px 0;
+  }
 `;
 
 const Root = () => {
