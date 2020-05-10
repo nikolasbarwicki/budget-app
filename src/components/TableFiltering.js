@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Input from 'components/Input';
 
 const Wrapper = styled.div`
+  width: 100%;
   padding: 0 5rem;
   height: 100%;
   display: flex;
@@ -29,19 +30,37 @@ const StyledLabel = styled.label`
 
 const ButtonsWrapper = styled.div`
   padding-top: 1rem;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.2rem;
 `;
 
-const StyledButton = styled.button`
+const StyledRadio = styled.label`
   height: 3rem;
-  width: 10rem;
   background-color: #edf0f5;
   border-radius: 1.5rem;
   border: none;
   font-family: inherit;
   font-size: 1.6rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: rgba(77, 124, 254, 0.1);
+  }
+`;
+
+const StyledRadioInput = styled.input`
+  display: none;
+
+  &:checked {
+    + label {
+      background-color: ${(props) => props.theme.blue};
+      color: white;
+    }
+  }
 `;
 
 const TableFiltering = ({
@@ -81,24 +100,37 @@ const TableFiltering = ({
       <div>
         <p>Filter by date</p>
         <ButtonsWrapper>
-          <StyledButton
-            type="button"
-            onClick={() => setDateFilter(moment().startOf('day').format('DD/MM/YYYY'))}
-          >
-            Today
-          </StyledButton>
-          <StyledButton
-            type="button"
-            onClick={() => setDateFilter(moment().startOf('week').format('DD/MM/YYYY'))}
-          >
-            This week
-          </StyledButton>
-          <StyledButton
-            type="button"
-            onClick={() => setDateFilter(moment().startOf('month').format('DD/MM/YYYY'))}
-          >
-            This month
-          </StyledButton>
+          <div>
+            <StyledRadioInput
+              type="radio"
+              name="options"
+              id="filterDay"
+              autoComplete="off"
+              onChange={() => setDateFilter(moment().startOf('day').format('DD/MM/YYYY'))}
+            />
+            <StyledRadio htmlFor="filterDay">Today</StyledRadio>
+          </div>
+          <div>
+            <StyledRadioInput
+              type="radio"
+              name="options"
+              id="filterWeek"
+              autoComplete="off"
+              onChange={() => setDateFilter(moment().startOf('isoWeek').format('DD/MM/YYYY'))}
+            />
+            <StyledRadio htmlFor="filterWeek">This week</StyledRadio>
+          </div>
+          <div>
+            <StyledRadioInput
+              type="radio"
+              name="options"
+              id="filterMonth"
+              autoComplete="off"
+              onChange={() => setDateFilter(moment().startOf('month').format('DD/MM/YYYY'))}
+              defaultChecked
+            />
+            <StyledRadio htmlFor="filterMonth">This month</StyledRadio>
+          </div>
         </ButtonsWrapper>
       </div>
     </Wrapper>

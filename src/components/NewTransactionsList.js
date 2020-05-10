@@ -94,7 +94,7 @@ const ProductTable = ({
       return (
         (catFilter ? item.category === catFilter : true) &&
         (term ? item.name.includes(term) : true) &&
-        (date ? moment.unix(item.date).format('DD/MM/YYYY') >= date : true)
+        (date ? moment(item.date).format('DD/MM/YYYY') >= date : true)
       );
     });
   };
