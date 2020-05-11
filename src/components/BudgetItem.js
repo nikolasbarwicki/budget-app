@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from 'context/GlobalState';
 import styled, { css } from 'styled-components';
-import deleteIcon from 'assets/deleteIcon.png';
+import deleteIcon from 'assets/deleteIcon.svg';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -14,9 +14,18 @@ const Wrapper = styled.div`
   padding: 2rem;
   border-bottom: 1px solid ${(props) => props.theme.gray};
 
-  @media only screen and (max-width: 420px) {
+  @media only screen and (min-width: 1200px) {
+    grid-template-columns: 25% 4rem min-content 4rem 4rem;
+  }
+
+  @media only screen and (max-width: 960px) {
     padding: 0;
-    grid-template-columns: 40% repeat(2, 1fr) 3rem;
+    grid-template-columns: 30% 4rem min-content 4rem 4rem;
+  }
+
+  @media only screen and (max-width: 576px) {
+    padding: 0;
+    grid-template-columns: 30% repeat(2, minmax(2rem, 6rem)) 4rem;
   }
 `;
 
@@ -33,12 +42,15 @@ const Category = styled.p`
 
 const StyledDelete = styled.button`
   background-image: url(${deleteIcon});
+  background-color: #fff;
+  color: white;
   background-repeat: no-repeat;
   height: 2rem;
   width: 2rem;
   border: none;
   cursor: pointer;
   justify-self: end;
+  overflow: hidden;
 `;
 
 const StyledAmount = styled.span`
@@ -55,7 +67,7 @@ const ProgressBar = styled.div`
   margin: 0 3.5rem;
   overflow: hidden;
 
-  @media only screen and (max-width: 420px) {
+  @media only screen and (max-width: 576px) {
     display: none;
   }
 `;

@@ -27,7 +27,7 @@ const Dialog = styled.div`
   transform: translate(-50%, -50%);
   z-index: 5;
 
-  @media only screen and (max-width: 420px) {
+  @media only screen and (max-width: 576px) {
     padding: 2rem;
   }
 `;

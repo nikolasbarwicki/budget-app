@@ -12,8 +12,12 @@ const Wrapper = styled.div`
   justify-content: space-evenly;
   align-items: stretch;
 
-  @media only screen and (max-width: 420px) {
+  @media only screen and (max-width: 576px) {
     padding: 1rem 2rem;
+  }
+
+  @media only screen and (max-width: 768px) {
+    padding: 0;
   }
 `;
 
@@ -38,7 +42,7 @@ const ButtonsWrapper = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1.2rem;
 
-  @media only screen and (max-width: 420px) {
+  @media only screen and (max-width: 576px) {
     grid-gap: 0.6rem;
   }
 `;
@@ -54,12 +58,13 @@ const StyledRadio = styled.label`
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 
   &:hover {
     background-color: rgba(77, 124, 254, 0.1);
   }
 
-  @media only screen and (max-width: 420px) {
+  @media only screen and (max-width: 576px) {
     font-size: 1.2rem;
   }
 `;
@@ -130,7 +135,7 @@ const TableFiltering = ({
               autoComplete="off"
               onChange={() => setDateFilter(moment().startOf('isoWeek').format('DD/MM/YYYY'))}
             />
-            <StyledRadio htmlFor="filterWeek">This week</StyledRadio>
+            <StyledRadio htmlFor="filterWeek">Week</StyledRadio>
           </div>
           <div>
             <StyledRadioInput
@@ -141,7 +146,7 @@ const TableFiltering = ({
               onChange={() => setDateFilter(moment().startOf('month').format('DD/MM/YYYY'))}
               defaultChecked
             />
-            <StyledRadio htmlFor="filterMonth">This month</StyledRadio>
+            <StyledRadio htmlFor="filterMonth">Month</StyledRadio>
           </div>
         </ButtonsWrapper>
       </div>

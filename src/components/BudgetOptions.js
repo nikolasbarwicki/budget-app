@@ -14,7 +14,11 @@ const Wrapper = styled.div`
   justify-content: space-evenly;
   align-items: stretch;
 
-  @media only screen and (max-width: 420px) {
+  @media only screen and (max-width: 576px) {
+    padding: 1rem 2rem;
+  }
+
+  @media only screen and (max-width: 768px) {
     padding: 0;
   }
 `;

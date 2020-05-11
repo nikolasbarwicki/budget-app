@@ -37,9 +37,14 @@ const Grid = styled.div`
     padding: 40px 40px;
   }
 
-  @media only screen and (max-width: 420px) {
+  @media only screen and (max-width: 576px) {
     grid-gap: 20px;
     padding: 40px 0;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    grid-gap: 20px;
+    padding: 40px 40px;
   }
 `;
 

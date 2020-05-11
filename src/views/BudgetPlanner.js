@@ -14,7 +14,7 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  @media only screen and (max-width: 420px) {
+  @media only screen and (max-width: 768px) {
     padding: 0 2rem;
     visibility: hidden;
   }
@@ -29,7 +29,7 @@ const Left = styled.div`
   grid-row: 2 / span 2;
 
   @media only screen and (max-width: 1200px) {
-    grid-column: 1 / span 12;
+    grid-column: 1 / span 9;
   }
 `;
 
@@ -37,11 +37,11 @@ const TopRight = styled.div`
   grid-column: 7 / span 3;
 
   @media only screen and (max-width: 1200px) {
-    grid-column: 1 / span 5;
+    grid-column: 1 / span 4;
   }
 
-  @media only screen and (max-width: 420px) {
-    grid-column: 1 / span 12;
+  @media only screen and (max-width: 576px) {
+    grid-column: 1 / span 9;
   }
 `;
 
@@ -49,11 +49,11 @@ const BottomRight = styled.div`
   grid-column: 7 / span 3;
 
   @media only screen and (max-width: 1200px) {
-    grid-column: 6 / span 5;
+    grid-column: 5 / span 5;
   }
 
-  @media only screen and (max-width: 420px) {
-    grid-column: 1 / span 12;
+  @media only screen and (max-width: 576px) {
+    grid-column: 1 / span 9;
   }
 `;
 

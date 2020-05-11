@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: 25rem 10rem;
+  grid-template-columns: minmax(10rem, 25rem) 10rem;
   grid-template-rows: repeat(3, 1fr);
   align-items: center;
   margin: auto 0;

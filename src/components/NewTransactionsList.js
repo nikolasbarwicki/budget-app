@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { GlobalContext } from 'context/GlobalState';
 import moment from 'moment';
 import styled from 'styled-components';
-import deleteIcon from 'assets/deleteIcon.png';
+import deleteIcon from 'assets/deleteIcon.svg';
 
 const useSortableData = (items, config = { key: 'date', direction: 'descending' }) => {
   const [sortConfig, setSortConfig] = React.useState(config);
@@ -37,7 +37,7 @@ const useSortableData = (items, config = { key: 'date', direction: 'descending' 
 const StyledTable = styled.table`
   width: 90%;
 
-  @media only screen and (max-width: 420px) {
+  @media only screen and (max-width: 576px) {
     width: 100%;
   }
 `;

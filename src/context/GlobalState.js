@@ -37,7 +37,7 @@ const initialState = {
       { id: 5, name: 'Tesco', category: 'Food', date: '2020-05-05', amount: 90 },
       { id: 6, name: 'Cinema', category: 'Entertainment', date: '2020-05-06', amount: 10 },
       { id: 7, name: 'Book', category: 'Entertainment', date: '2020-05-07', amount: 5 },
-      { id: 8, name: 'dzsiaij', category: 'Entertainment', date: '2020-05-08', amount: 90 },
+      { id: 8, name: 'Doctor', category: 'Entertainment', date: '2020-05-08', amount: 90 },
       { id: 9, name: 'Walmart', category: 'Food', date: '2020-05-09', amount: 140 },
       { id: 10, name: 'Gasoline', category: 'Car', date: '2020-05-10', amount: 35 },
     ],
