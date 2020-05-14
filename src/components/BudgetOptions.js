@@ -1,10 +1,23 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from 'context/GlobalState';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Formik } from 'formik';
-import NumberFormat from 'react-number-format';
+import * as Yup from 'yup';
 import NumberInput from 'components/NumberInput';
 import cuid from 'cuid';
+
+const StyledInputs = css`
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+
+  &:focus {
+    border: 1px solid ${(props) => props.theme.blue};
+    box-shadow: 0 0 5px rgba(77, 124, 254, 0.5);
+    outline: none;
+  }
+`;
 
 const Wrapper = styled.div`
   padding: 0 5rem;
@@ -48,6 +61,8 @@ const StyledHr = styled.hr`
 `;
 
 const StyledInput = styled.input`
+  ${StyledInputs}
+
   height: 4rem;
   padding: 1rem;
   border-radius: 1.5rem;
@@ -55,15 +70,38 @@ const StyledInput = styled.input`
   font-family: inherit;
   font-weight: ${(props) => props.theme.bold};
   color: inherit;
+
+  ${({ error }) =>
+    error &&
+    css`
+      border: 1px solid ${(props) => props.theme.red};
+      outline: none;
+
+      &:focus,
+      &:active {
+        box-shadow: ${(props) => props.theme.red} 0px 0px 5px 1px;
+        border: 1px solid ${(props) => props.theme.red};
+        outline: none;
+      }
+    `}
 `;
 
 const StyledLabel = styled.label`
   grid-column: 1 / -1;
   display: flex;
   flex-direction: column;
+  position: relative;
 `;
 
-const StyledNumberFormat = styled(NumberFormat)`
+const OtherStyledLabel = styled.label`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+`;
+
+const StyledNumberInput = styled(NumberInput)`
+  ${StyledInputs}
+
   height: 4rem;
   padding: 1rem;
   border-radius: 1.5rem;
@@ -71,7 +109,38 @@ const StyledNumberFormat = styled(NumberFormat)`
   font-family: inherit;
   font-weight: ${(props) => props.theme.bold};
   color: inherit;
+
+  ${({ error }) =>
+    error &&
+    css`
+      border: 1px solid ${(props) => props.theme.red};
+      outline: none;
+
+      &:focus,
+      &:active {
+        box-shadow: ${(props) => props.theme.red} 0px 0px 5px 1px;
+        border: 1px solid ${(props) => props.theme.red};
+        outline: none;
+      }
+    `}
 `;
+
+const Error = styled.span`
+  color: ${(props) => props.theme.red};
+  font-size: ${(props) => props.theme.fontSize.s};
+  position: absolute;
+  z-index: 10;
+  top: 6rem;
+  width: 20rem;
+`;
+
+const schema = Yup.object().shape({
+  category: Yup.string()
+    .min(1, 'The name is too short!')
+    .max(50, 'The name is too long!')
+    .required('Please enter the name'),
+  amount: Yup.number().positive('Must be greater than 0!').required('Please enter the amount'),
+});
 
 const BudgetOptions = () => {
   const { addCategory, income, updateIncome } = useContext(GlobalContext);
@@ -82,7 +151,7 @@ const BudgetOptions = () => {
     <Wrapper>
       <StyledLabel htmlFor="monthlyIncome">
         This month income:
-        <StyledNumberFormat
+        <StyledNumberInput
           id="monthlyIncome"
           value={currIncome}
           thousandSeparator
@@ -98,8 +167,10 @@ const BudgetOptions = () => {
       <StyledHr />
       <Formik
         initialValues={{ id: cuid.slug(), category: '', amount: '' }}
-        onSubmit={(values) => {
+        validationSchema={schema}
+        onSubmit={(values, { resetForm }) => {
           addCategory(values);
+          resetForm();
         }}
       >
         {(props) => (
@@ -112,15 +183,24 @@ const BudgetOptions = () => {
                 type="text"
                 onChange={props.handleChange}
                 value={props.values.category}
+                autoComplete="off"
+                error={props.errors.category && props.touched.category}
               />
+              {props.errors.category && props.touched.category ? (
+                <Error>{props.errors.category}</Error>
+              ) : null}
             </StyledLabel>
-            <label htmlFor="amount">
+            <OtherStyledLabel htmlFor="amount">
               Amount:
-              <NumberInput
+              <StyledNumberInput
                 value={props.values.amount}
                 onValueChange={(val) => props.setFieldValue('amount', val.floatValue)}
+                error={props.errors.amount && props.touched.amount}
               />
-            </label>
+              {props.errors.amount && props.touched.amount ? (
+                <Error>{props.errors.amount}</Error>
+              ) : null}
+            </OtherStyledLabel>
             <StyledButton type="submit">Add category</StyledButton>
           </StyledForm>
         )}
