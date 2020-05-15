@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { GlobalContext } from 'context/GlobalState';
-import BudgetItem from 'components/BudgetItem';
+import BudgetItem from 'components/BudgetCategories/BudgetItem';
 
 const Wrapper = styled.div`
   width: 95%;

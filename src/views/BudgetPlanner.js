@@ -1,88 +1,25 @@
 import React from 'react';
-import styled from 'styled-components';
-import ToggleModal from 'components/ToggleModal';
-
+import Header from 'components/Header';
 import Card from 'components/Card';
-import BudgetItems from 'components/BudgetItems';
-import BudgetStatus from 'components/BudgetStatus';
-import { ModalProvider } from 'context/modalContext';
-import BudgetOptions from 'components/BudgetOptions';
+import BudgetItems from 'components/BudgetCategories/BudgetItems';
+import BudgetOptions from 'components/Cards/BudgetOptions';
+import BudgetStatus from 'components/Cards/BudgetStatus';
 
-const Header = styled.div`
-  grid-column: 1 / -1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  @media only screen and (max-width: 768px) {
-    padding: 0 2rem;
-    visibility: hidden;
-  }
-`;
-
-const Heading = styled.h1`
-  font-size: ${(props) => props.theme.fontSize.l};
-`;
-
-const Left = styled.div`
-  grid-column: 1 / span 6;
-  grid-row: 2 / span 2;
-
-  @media only screen and (max-width: 1200px) {
-    grid-column: 1 / span 9;
-  }
-`;
-
-const TopRight = styled.div`
-  grid-column: 7 / span 3;
-
-  @media only screen and (max-width: 1200px) {
-    grid-column: 1 / span 4;
-  }
-
-  @media only screen and (max-width: 576px) {
-    grid-column: 1 / span 9;
-  }
-`;
-
-const BottomRight = styled.div`
-  grid-column: 7 / span 3;
-
-  @media only screen and (max-width: 1200px) {
-    grid-column: 5 / span 5;
-  }
-
-  @media only screen and (max-width: 576px) {
-    grid-column: 1 / span 9;
-  }
-`;
-
-const Dashboard = () => {
+const BudgetPlanner = () => {
   return (
     <>
-      <Header>
-        <Heading>Budget planner</Heading>
-        <ModalProvider>
-          <ToggleModal />
-        </ModalProvider>
-      </Header>
-      <Left>
-        <Card title="Budget categories">
-          <BudgetItems />
-        </Card>
-      </Left>
-      <TopRight>
-        <Card title="Options">
-          <BudgetOptions />
-        </Card>
-      </TopRight>
-      <BottomRight>
-        <Card title="Budget status">
-          <BudgetStatus />
-        </Card>
-      </BottomRight>
+      <Header heading="Budget planner" />
+      <Card title="Budget categories" gridArea="mainTop / mainTop / mainBottom / mainTop">
+        <BudgetItems />
+      </Card>
+      <Card title="Options" gridArea="secondaryTop">
+        <BudgetOptions />
+      </Card>
+      <Card title="Budget status" gridArea="secondaryBottom">
+        <BudgetStatus />
+      </Card>
     </>
   );
 };
 
-export default Dashboard;
+export default BudgetPlanner;

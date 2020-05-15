@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import MenuItem from 'components/MenuItem';
-import ToggleModal from 'components/ToggleModal';
+import MenuItem from 'components/Sidebar/MenuItem';
+import ToggleModal from 'components/Modal/ToggleModal';
 import { ModalProvider } from 'context/modalContext';
 
 import icons from 'assets/icons-sprite.svg';

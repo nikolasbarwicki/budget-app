@@ -1,70 +1,9 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import ToggleModal from 'components/ToggleModal';
+import Header from 'components/Header';
 import Card from 'components/Card';
-import BudgetStatus from 'components/BudgetStatus';
-import NewTransactionsList from 'components/NewTransactionsList';
+import NewTransactionsList from 'components/Cards/TransactionsTable';
 import TableFiltering from 'components/TableFiltering';
-
-import { ModalProvider } from 'context/modalContext';
-
-const Header = styled.div`
-  grid-column: 1 / -1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  @media only screen and (max-width: 576px) {
-    padding: 0 2rem;
-    visibility: hidden;
-  }
-
-  @media only screen and (max-width: 768px) {
-    visibility: hidden;
-  }
-`;
-
-const Heading = styled.h1`
-  font-size: ${(props) => props.theme.fontSize.l};
-`;
-
-const Left = styled.div`
-  grid-column: 1 / span 6;
-  grid-row: 2 / span 2;
-
-  @media only screen and (max-width: 1200px) {
-    grid-column: 1 / span 9;
-  }
-
-  @media only screen and (max-width: 576px) {
-    grid-column: 1 / span 9;
-    grid-row: 4 / span 2;
-  }
-`;
-
-const TopRight = styled.div`
-  grid-column: 7 / span 3;
-
-  @media only screen and (max-width: 1200px) {
-    grid-column: 1 / span 4;
-  }
-
-  @media only screen and (max-width: 576px) {
-    grid-column: 1 / span 9;
-  }
-`;
-
-const BottomRight = styled.div`
-  grid-column: 7 / span 3;
-
-  @media only screen and (max-width: 1200px) {
-    grid-column: 5 / span 5;
-  }
-
-  @media only screen and (max-width: 576px) {
-    grid-column: 1 / span 9;
-  }
-`;
+import BudgetStatus from 'components/Cards/BudgetStatus';
 
 const Transactions = () => {
   const [categoryFilter, setCategoryFilter] = useState(null);
@@ -73,38 +12,27 @@ const Transactions = () => {
 
   return (
     <>
-      <Header>
-        <Heading>Transactions</Heading>
-        <ModalProvider>
-          <ToggleModal />
-        </ModalProvider>
-      </Header>
-      <Left>
-        <Card title="Transactions">
-          <NewTransactionsList
-            dateFilter={dateFilter}
-            nameSearch={nameSearch}
-            categoryFilter={categoryFilter}
-          />
-        </Card>
-      </Left>
-      <TopRight>
-        <Card title="Filtering options">
-          <TableFiltering
-            categoryFilter={categoryFilter}
-            nameSearch={nameSearch}
-            dateFilter={dateFilter}
-            setCategoryFilter={(value) => setCategoryFilter(value)}
-            setNameSearch={(value) => setNameSearch(value)}
-            setDateFilter={(value) => setDateFilter(value)}
-          />
-        </Card>
-      </TopRight>
-      <BottomRight>
-        <Card title="Budget status">
-          <BudgetStatus />
-        </Card>
-      </BottomRight>
+      <Header heading="Dashboard" />
+      <Card title="Transactions" gridArea="mainTop / mainTop / mainBottom / mainTop">
+        <NewTransactionsList
+          dateFilter={dateFilter}
+          nameSearch={nameSearch}
+          categoryFilter={categoryFilter}
+        />
+      </Card>
+      <Card title="Filtering options" gridArea="secondaryTop">
+        <TableFiltering
+          categoryFilter={categoryFilter}
+          nameSearch={nameSearch}
+          dateFilter={dateFilter}
+          setCategoryFilter={(value) => setCategoryFilter(value)}
+          setNameSearch={(value) => setNameSearch(value)}
+          setDateFilter={(value) => setDateFilter(value)}
+        />
+      </Card>
+      <Card title="Budget status" gridArea="secondaryBottom">
+        <BudgetStatus />
+      </Card>
     </>
   );
 };

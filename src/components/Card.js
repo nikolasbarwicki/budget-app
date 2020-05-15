@@ -14,6 +14,8 @@ const Wrapper = styled.div`
   @media only screen and (max-width: 576px) {
     border-radius: 0;
   }
+
+  grid-area: ${({ gridArea }) => gridArea};
 `;
 
 const Heading = styled.div`
@@ -40,9 +42,9 @@ const Content = styled.div`
   align-items: center;
 `;
 
-const Card = ({ title, children }) => {
+const Card = ({ title, children, gridArea }) => {
   return (
-    <Wrapper>
+    <Wrapper gridArea={gridArea}>
       <Heading>
         <Title>{title}</Title>
       </Heading>

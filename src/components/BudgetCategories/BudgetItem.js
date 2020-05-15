@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from 'context/GlobalState';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import deleteIcon from 'assets/deleteIcon.svg';
+import ProgressBar from 'components/ProgressBar';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -59,31 +60,6 @@ const StyledAmount = styled.span`
   margin-bottom: 0.5rem;
 `;
 
-const ProgressBar = styled.div`
-  height: 1.1rem;
-  width: 15vw;
-  background-color: ${(props) => props.theme.gray};
-  border-radius: 2rem;
-  margin: 0 3.5rem;
-  overflow: hidden;
-
-  @media only screen and (max-width: 576px) {
-    display: none;
-  }
-`;
-
-const PrgoressBarInside = styled.div`
-  height: 100%;
-  width: ${({ width }) => `${width}%`};
-  background-color: ${(props) => props.theme.blue};
-
-  ${({ width }) =>
-    width >= 100 &&
-    css`
-      background-color: ${(props) => props.theme.red};
-    `}
-`;
-
 const BudgetItem = ({ category, amount, spent, id }) => {
   const { deleteCategory } = useContext(GlobalContext);
 
@@ -94,9 +70,8 @@ const BudgetItem = ({ category, amount, spent, id }) => {
         <StyledAmount>${spent}</StyledAmount>
         <span>Spent</span>
       </AmountBox>
-      <ProgressBar>
-        <PrgoressBarInside width={(spent / amount) * 100} />
-      </ProgressBar>
+      <ProgressBar width={(spent / amount) * 100} />
+
       <AmountBox>
         <StyledAmount>${amount}</StyledAmount>
         <span>Planned</span>

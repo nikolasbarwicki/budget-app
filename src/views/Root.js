@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Sidebar from 'components/Sidebar';
+import Sidebar from 'components/Sidebar/Sidebar';
 import Dashboard from 'views/Dashboard';
 import BudgetPlanner from 'views/BudgetPlanner';
 import Transactions from 'views/Transactions';
@@ -15,6 +15,7 @@ import { theme } from 'theme/mainTheme';
 const Wrapper = styled.div`
   display: flex;
   height: 100%;
+  justify-content: space-between;
 
   @media only screen and (max-width: 768px) {
     display: flex;
@@ -25,12 +26,15 @@ const Wrapper = styled.div`
 const Grid = styled.div`
   min-height: 100vh;
   background-color: #f7f8fc;
-  width: 100%;
+  width: calc(100vw - 300px);
   display: grid;
-  grid-template-columns: repeat(9, 1fr);
+  grid-template-columns: 60% 40%;
   grid-template-rows: 56px 1fr 1fr;
-  grid-gap: 50px;
-  padding: 40px 80px;
+
+  grid-template-areas:
+    'header header'
+    'mainTop secondaryTop'
+    'mainBottom secondaryBottom';
 
   @media only screen and (max-width: 1200px) {
     grid-gap: 20px;

@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
 
   *, *::before, *::after {
     box-sizing: border-box;

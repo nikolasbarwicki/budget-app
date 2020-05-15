@@ -5,7 +5,7 @@ import { ModalContext } from 'context/modalContext';
 import styled from 'styled-components';
 import useOnClickOutside from 'hooks/useOnClickOutside';
 
-import Form from 'components/Form';
+import Form from 'components/Modal/Form';
 
 const Overlay = styled.div`
   position: fixed;

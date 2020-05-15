@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import MenuItem from 'components/MenuItem';
-import MobileNav from 'components/MobileNav';
+import MenuItem from 'components/Sidebar/MenuItem';
+import MobileNav from 'components/Sidebar/MobileNav';
 
 import icons from 'assets/icons-sprite.svg';
 
@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: stretch;
   flex-direction: column;
-  width: 350px;
+  min-width: 300px;
   -webkit-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
