@@ -60,7 +60,11 @@ const Sidebar = () => {
             </MenuItem>
           </li>
           <li>
-            <MenuItem to="/transactions" href={`${icons}#list-text`} activeClassName>
+            <MenuItem
+              to="/transactions"
+              href={`${icons}#list-text`}
+              activeClassName
+            >
               Trasactions
             </MenuItem>
           </li>

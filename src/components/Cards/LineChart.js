@@ -1,11 +1,16 @@
 import React, { useContext, useEffect } from 'react';
 import { Line, Chart } from 'react-chartjs-2';
 import { GlobalContext } from 'context/GlobalState';
+import moment from 'moment';
 
 const LineChart = () => {
-  const { income, expense, expenses, updateExpense } = useContext(GlobalContext);
+  const { income, expense, expenses, updateExpense } = useContext(
+    GlobalContext,
+  );
 
-  const currExpenses = expenses[4];
+  const currMonth = moment().month();
+
+  const currExpenses = expenses[currMonth];
 
   Chart.defaults.global.defaultFontFamily = "'Raleway', sans-serif";
   Chart.defaults.global.legend.display = false;
@@ -31,7 +36,7 @@ const LineChart = () => {
     gradientRed.addColorStop(1, 'rgba(255, 255, 255, 0)');
 
     return {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
       datasets: [
         {
           label: 'Income',
@@ -93,7 +98,8 @@ const LineChart = () => {
       intersect: false,
       callbacks: {
         label(tooltipItem, chart) {
-          const datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+          const datasetLabel =
+            chart.datasets[tooltipItem.datasetIndex].label || '';
           return `${datasetLabel}: $${tooltipItem.yLabel}`;
         },
       },

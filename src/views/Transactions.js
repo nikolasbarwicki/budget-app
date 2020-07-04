@@ -10,10 +10,15 @@ const Transactions = () => {
   const [nameSearch, setNameSearch] = useState(null);
   const [dateFilter, setDateFilter] = useState(null);
 
+  console.log(dateFilter);
+
   return (
     <>
       <Header heading="Dashboard" />
-      <Card title="Transactions" gridArea="mainTop / mainTop / mainBottom / mainTop">
+      <Card
+        title="Transactions"
+        gridArea="mainTop / mainTop / mainBottom / mainTop"
+      >
         <NewTransactionsList
           dateFilter={dateFilter}
           nameSearch={nameSearch}

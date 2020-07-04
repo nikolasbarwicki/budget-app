@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { GlobalContext } from 'context/GlobalState';
+import moment from 'moment';
 import BudgetItem from 'components/BudgetCategories/BudgetItem';
 
 const Wrapper = styled.div`
@@ -11,17 +12,20 @@ const Wrapper = styled.div`
 `;
 
 const BudgetItems = () => {
-  //   const currMonth = moment().month();
+  const currMonth = moment().month();
 
   const { budget, expenses } = useContext(GlobalContext);
 
-  const currBudget = budget[4];
-  const currExpenses = expenses[4];
+  const currBudget = budget[currMonth];
+  const currExpenses = expenses[currMonth];
 
   const calcCategoryExpenses = (cat) => {
-    return [...currExpenses.filter(({ category }) => category === cat)].reduce((sum, item) => {
-      return sum + item.amount;
-    }, 0);
+    return [...currExpenses.filter(({ category }) => category === cat)].reduce(
+      (sum, item) => {
+        return sum + item.amount;
+      },
+      0,
+    );
   };
 
   return (

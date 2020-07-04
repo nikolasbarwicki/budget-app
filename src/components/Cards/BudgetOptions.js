@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import NumberInput from 'components/NumberInput';
+import moment from 'moment';
 import cuid from 'cuid';
 
 const StyledInputs = css`
@@ -139,13 +140,17 @@ const schema = Yup.object().shape({
     .min(1, 'The name is too short!')
     .max(50, 'The name is too long!')
     .required('Please enter the name'),
-  amount: Yup.number().positive('Must be greater than 0!').required('Please enter the amount'),
+  amount: Yup.number()
+    .positive('Must be greater than 0!')
+    .required('Please enter the amount'),
 });
 
 const BudgetOptions = () => {
   const { addCategory, income, updateIncome } = useContext(GlobalContext);
 
-  const currIncome = income[4];
+  const currMonth = moment().month();
+
+  const currIncome = income[currMonth];
 
   return (
     <Wrapper>
@@ -194,7 +199,9 @@ const BudgetOptions = () => {
               Amount:
               <StyledNumberInput
                 value={props.values.amount}
-                onValueChange={(val) => props.setFieldValue('amount', val.floatValue)}
+                onValueChange={(val) =>
+                  props.setFieldValue('amount', val.floatValue)
+                }
                 error={props.errors.amount && props.touched.amount}
               />
               {props.errors.amount && props.touched.amount ? (
@@ -205,11 +212,6 @@ const BudgetOptions = () => {
           </StyledForm>
         )}
       </Formik>
-      {/* <Input label="Category name:" />
-      <InnerWrapper>
-        <Input label="Amount:" />
-        <StyledButton>Add category</StyledButton>
-      </InnerWrapper> */}
     </Wrapper>
   );
 };

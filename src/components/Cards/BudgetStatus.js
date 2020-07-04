@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import ProgressBarCircle from 'components/ProgressBarCircle';
 import { GlobalContext } from 'context/GlobalState';
 import styled from 'styled-components';
+import moment from 'moment';
 
 const Wrapper = styled.div`
   display: grid;
@@ -25,9 +26,11 @@ const StyledAmount = styled.span`
 const BudgetStatus = () => {
   const { expenses, budget, income } = useContext(GlobalContext);
 
-  const currExpenses = expenses[4];
-  const currBudget = budget[4];
-  const currIncome = income[4];
+  const currMonth = moment().month();
+
+  const currExpenses = expenses[currMonth];
+  const currBudget = budget[currMonth];
+  const currIncome = income[currMonth];
 
   const spent = currExpenses.reduce((sum, item) => {
     return sum + item.amount;

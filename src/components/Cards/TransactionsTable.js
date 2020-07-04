@@ -4,7 +4,10 @@ import moment from 'moment';
 import styled from 'styled-components';
 import deleteIcon from 'assets/deleteIcon.svg';
 
-const useSortableData = (items, config = { key: 'date', direction: 'descending' }) => {
+const useSortableData = (
+  items,
+  config = { key: 'date', direction: 'descending' },
+) => {
   const [sortConfig, setSortConfig] = React.useState(config);
 
   const sortedItems = React.useMemo(() => {
@@ -25,7 +28,11 @@ const useSortableData = (items, config = { key: 'date', direction: 'descending' 
 
   const requestSort = (key) => {
     let direction = 'descending';
-    if (sortConfig && sortConfig.key === key && sortConfig.direction === 'descending') {
+    if (
+      sortConfig &&
+      sortConfig.key === key &&
+      sortConfig.direction === 'descending'
+    ) {
       direction = 'ascending';
     }
     setSortConfig({ key, direction });
@@ -90,6 +97,8 @@ const StyledSortButton = styled.button`
   cursor: pointer;
 `;
 
+const currMonth = moment().month();
+
 const ProductTable = ({
   data,
   categoryFilter,
@@ -99,6 +108,7 @@ const ProductTable = ({
   noDelete,
 }) => {
   const { items, requestSort, sortConfig } = useSortableData(data);
+
   const getClassNamesFor = (name) => {
     if (!sortConfig) {
       return;
@@ -168,7 +178,7 @@ const ProductTable = ({
 
       {noDelete ? (
         <tbody>
-          {filtered.splice(0, 6).map((item) => (
+          {filtered.splice(0, currMonth).map((item) => (
             <StyledTr key={item.id}>
               <StyledTd>{item.name}</StyledTd>
               <StyledTd mobile>{item.category}</StyledTd>
@@ -186,7 +196,10 @@ const ProductTable = ({
               <StyledTd>{moment(item.date).format('DD/MM/YYYY')}</StyledTd>
               <StyledTd bold>${item.amount.toFixed(2)}</StyledTd>
               <StyledTd>
-                <StyledDelete type="button" onClick={() => deleteTransaction(item.id)} />
+                <StyledDelete
+                  type="button"
+                  onClick={() => deleteTransaction(item.id)}
+                />
               </StyledTd>
             </StyledTr>
           ))}
@@ -196,10 +209,15 @@ const ProductTable = ({
   );
 };
 
-export default function App({ dateFilter, nameSearch, categoryFilter, noDelete }) {
+export default function App({
+  dateFilter,
+  nameSearch,
+  categoryFilter,
+  noDelete,
+}) {
   const { expenses, deleteTransaction } = useContext(GlobalContext);
 
-  const currExpenses = expenses[4];
+  const currExpenses = expenses[currMonth];
 
   return (
     <ProductTable
