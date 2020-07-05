@@ -5,7 +5,7 @@ import MobileNav from 'components/Sidebar/MobileNav';
 
 import icons from 'assets/icons-sprite.svg';
 
-const Wrapper = styled.div`
+const Wrapper = styled.nav`
   display: flex;
   align-items: stretch;
   flex-direction: column;

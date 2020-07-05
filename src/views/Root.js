@@ -23,7 +23,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Grid = styled.div`
+const Grid = styled.main`
   min-height: 100vh;
   background-color: #f7f8fc;
   width: calc(100vw - 300px);
