@@ -39,6 +39,16 @@ const Grid = styled.div`
   @media only screen and (max-width: 1200px) {
     grid-gap: 20px;
     padding: 40px 40px;
+
+    width: 100%;
+    grid-template-columns: 1fr;
+
+    grid-template-areas:
+      'header'
+      'mainTop'
+      'mainBottom'
+      'secondaryTop'
+      'secondaryBottom';
   }
 
   @media only screen and (max-width: 576px) {
