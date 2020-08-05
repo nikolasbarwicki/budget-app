@@ -2,6 +2,13 @@
 
 React app to create and manage your household budget. User friendly finance tracker with many charts and filterable transactions list.
 
+> DISCLAIMER
+> All existing data and adding new data are set to July 2020 due to the necessity to set up an external database and pull out all data from context API and reducers hooks.
+
+### Live demo
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d1428a85-de72-445b-bf98-c16256fab939/deploy-status)](https://admiring-bohr-76daef.netlify.app/)
+
 <p align="center">
   <img width="600" src="https://i.ibb.co/XzkV31p/Adnotacja-2020-07-04-153704.png" alt="Adnotacja-2020-07-04-153704">
 </p>
