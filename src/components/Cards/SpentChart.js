@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Doughnut, Chart } from 'react-chartjs-2';
 import { GlobalContext } from 'context/GlobalState';
-import moment from 'moment';
 
 const options = {
   responsive: true,
@@ -10,7 +9,7 @@ const options = {
 
 const SpentChart = () => {
   Chart.defaults.global.legend.display = true;
-  const currMonth = moment().month();
+  const currMonth = 6;
 
   const { income, expenses } = useContext(GlobalContext);
 

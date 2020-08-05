@@ -97,7 +97,7 @@ const StyledSortButton = styled.button`
   cursor: pointer;
 `;
 
-const currMonth = moment().month();
+const currMonth = 6;
 
 const ProductTable = ({
   data,

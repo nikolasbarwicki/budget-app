@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { GlobalContext } from 'context/GlobalState';
-import moment from 'moment';
 import BudgetItem from 'components/BudgetCategories/BudgetItem';
 
 const Wrapper = styled.div`
@@ -12,7 +11,7 @@ const Wrapper = styled.div`
 `;
 
 const BudgetItems = () => {
-  const currMonth = moment().month();
+  const currMonth = 6;
 
   const { budget, expenses } = useContext(GlobalContext);
 

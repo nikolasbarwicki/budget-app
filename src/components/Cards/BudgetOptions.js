@@ -4,7 +4,6 @@ import styled, { css } from 'styled-components';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import NumberInput from 'components/NumberInput';
-import moment from 'moment';
 import cuid from 'cuid';
 
 const StyledInputs = css`
@@ -148,7 +147,7 @@ const schema = Yup.object().shape({
 const BudgetOptions = () => {
   const { addCategory, income, updateIncome } = useContext(GlobalContext);
 
-  const currMonth = moment().month();
+  const currMonth = 6;
 
   const currIncome = income[currMonth];
 

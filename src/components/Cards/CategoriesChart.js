@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { Doughnut } from 'react-chartjs-2';
-import moment from 'moment';
 import { GlobalContext } from 'context/GlobalState';
 
 const options = {
@@ -13,7 +12,7 @@ const options = {
 };
 
 const CategoriesChart = () => {
-  const currMonth = moment().month();
+  const currMonth = 6;
 
   const { expenses } = useContext(GlobalContext);
   const currExpenses = expenses[currMonth];

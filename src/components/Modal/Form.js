@@ -138,7 +138,9 @@ const schema = Yup.object().shape({
 });
 
 const Form = () => {
-  const { addTransaction, categories, updateExpense, expenses } = useContext(GlobalContext);
+  const { addTransaction, categories, updateExpense, expenses } = useContext(
+    GlobalContext,
+  );
   const { handleModal } = useContext(ModalContext);
 
   const currExpenses = expenses[4];
@@ -157,7 +159,6 @@ const Form = () => {
         validationSchema={schema}
         onSubmit={(values) => {
           addTransaction(values);
-          console.log(values);
 
           const spent = currExpenses.reduce((sum, item) => {
             return sum + item.amount;
@@ -195,7 +196,9 @@ const Form = () => {
                 autoComplete="off"
                 error={props.errors.name && props.touched.name}
               />
-              {props.errors.name && props.touched.name ? <Error>{props.errors.name}</Error> : null}
+              {props.errors.name && props.touched.name ? (
+                <Error>{props.errors.name}</Error>
+              ) : null}
             </StyledLabel>
 
             <StyledLabel htmlFor="date">
@@ -204,19 +207,25 @@ const Form = () => {
                 id="date"
                 name="date"
                 type="date"
+                min="2020-07-01"
+                max="2020-07-31"
                 onChange={props.handleChange}
                 value={props.values.date}
                 parse={props.parse}
                 error={props.errors.date && props.touched.date}
               />
-              {props.errors.date && props.touched.date ? <Error>{props.errors.date}</Error> : null}
+              {props.errors.date && props.touched.date ? (
+                <Error>{props.errors.date}</Error>
+              ) : null}
             </StyledLabel>
 
             <StyledLabel htmlFor="amount">
               Amount
               <StyledNumberInput
                 value={props.values.amount}
-                onValueChange={(val) => props.setFieldValue('amount', val.floatValue)}
+                onValueChange={(val) =>
+                  props.setFieldValue('amount', val.floatValue)
+                }
                 error={props.errors.amount && props.touched.amount}
               />
               {props.errors.amount && props.touched.amount ? (

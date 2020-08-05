@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import NumberFormat from 'react-number-format';
 import { GlobalContext } from 'context/GlobalState';
-import moment from 'moment';
 import styled from 'styled-components';
 
 const StyledLabel = styled.label`
@@ -17,7 +16,7 @@ const StyledInput = styled(NumberFormat)`
 `;
 
 const IncomeInput = () => {
-  const currMonth = moment().month();
+  const currMonth = 6;
   const { income, updateIncome } = useContext(GlobalContext);
 
   const currIncome = income[currMonth];

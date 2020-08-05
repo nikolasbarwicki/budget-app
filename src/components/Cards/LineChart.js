@@ -1,14 +1,13 @@
 import React, { useContext, useEffect } from 'react';
 import { Line, Chart } from 'react-chartjs-2';
 import { GlobalContext } from 'context/GlobalState';
-import moment from 'moment';
 
 const LineChart = () => {
   const { income, expense, expenses, updateExpense } = useContext(
     GlobalContext,
   );
 
-  const currMonth = moment().month();
+  const currMonth = 6;
 
   const currExpenses = expenses[currMonth];
 
